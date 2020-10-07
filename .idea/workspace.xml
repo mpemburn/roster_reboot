@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3d9437d8-c97f-462f-94e9-eccc0c3c0ff1" name="Default Changelist" comment="" />
+    <list default="true" id="3d9437d8-c97f-462f-94e9-eccc0c3c0ff1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/LaravelTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/SeedDatabase.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/SeedDatabaseState.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -142,6 +151,12 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -159,11 +174,21 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602090592858</updated>
-      <workItem from="1602090594428" duration="290000" />
+      <workItem from="1602090594428" duration="2495000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="928" y="414" key="NewPhpFileDialog" timestamp="1602094271230">
+      <screen x="0" y="23" width="1920" height="975" />
+    </state>
+    <state x="928" y="414" key="NewPhpFileDialog/0.23.1920.975/-1680.23.1680.1027@0.23.1920.975" timestamp="1602094271230" />
+    <state x="812" y="238" width="586" height="490" key="find.popup" timestamp="1602094638783">
+      <screen x="0" y="23" width="1920" height="975" />
+    </state>
+    <state x="812" y="238" width="586" height="490" key="find.popup/0.23.1920.975/-1680.23.1680.1027@0.23.1920.975" timestamp="1602094638783" />
   </component>
 </project>
