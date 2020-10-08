@@ -161,6 +161,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        // Third Party
+        Spatie\Permission\PermissionServiceProvider::class,
 
         /*
          * Package Service Providers...

@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d9437d8-c97f-462f-94e9-eccc0c3c0ff1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Models/Member.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_07_152100_CreateMembersTable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/MemberSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Integration/UserTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/MigrateFreshSeedOnce.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Unit/MemberModelTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Unit/UserModelTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/roster.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/roster.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/LaravelTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/DbTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,6 +138,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
       <path value="$PROJECT_DIR$/vendor/opis/closure" />
       <path value="$PROJECT_DIR$/vendor/fideloper/proxy" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-permission" />
     </include_path>
   </component>
   <component name="ProjectId" id="1iYhmb9HLMUBSVKWmOi05az1LRL" />
@@ -188,7 +183,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602090592858</updated>
-      <workItem from="1602090594428" duration="10445000" />
+      <workItem from="1602090594428" duration="11072000" />
     </task>
     <servers />
   </component>
