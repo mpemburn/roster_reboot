@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Tests\Unit;
+namespace Tests\Unit\Models;
 
 use App\Models\Member;
 use Tests\TestCase;
 
-class MemberModelTest extends TestCase
+class MemberTest extends TestCase
 {
     protected $member;
 
@@ -22,12 +22,12 @@ class MemberModelTest extends TestCase
 
     public function testMemberHasFirstName(): void
     {
-        $this->assertEquals('Jorge', $this->member->first_name);
+        self::assertEquals('Jorge', $this->member->first_name);
     }
 
    public function testMemberHasLastName(): void
     {
-        $this->assertEquals('Jones', $this->member->last_name);
+        self::assertEquals('Jones', $this->member->last_name);
     }
 
 }

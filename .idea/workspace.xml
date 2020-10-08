@@ -2,12 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d9437d8-c97f-462f-94e9-eccc0c3c0ff1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/roster.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/roster.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Unit/Models/UserTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Member.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Member.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/ExampleTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/ExampleTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Integration/UserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Integration/UserTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/SeedDatabase.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/SeedDatabaseState.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/DbTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/ExampleTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/MemberModelTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/Models/MemberTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/UserModelTest.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,12 +169,13 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/Unit/Models" />
+      <recent name="$PROJECT_DIR$/tests/Unit" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/tests/Unit" />
       <recent name="$PROJECT_DIR$/database/seeders" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/tests/Unit" />
     </key>
   </component>
   <component name="RunManager">
@@ -186,7 +193,8 @@
       <option name="presentableId" value="Default" />
       <updated>1602090592858</updated>
       <workItem from="1602090594428" duration="13626000" />
-      <workItem from="1602167689637" duration="2094000" />
+      <workItem from="1602167689637" duration="2515000" />
+      <workItem from="1602170241486" duration="679000" />
     </task>
     <servers />
   </component>
@@ -217,10 +225,11 @@
       <screen x="0" y="23" width="1920" height="978" />
     </state>
     <state x="614" y="122" key="SettingsEditor/0.23.1920.978/-1680.23.1680.1027@0.23.1920.978" timestamp="1602167085333" />
-    <state x="812" y="238" width="586" height="490" key="find.popup" timestamp="1602097846535">
-      <screen x="0" y="23" width="1920" height="975" />
+    <state x="812" y="239" width="785" height="592" key="find.popup" timestamp="1602170178472">
+      <screen x="0" y="23" width="1920" height="978" />
     </state>
     <state x="812" y="238" width="586" height="490" key="find.popup/0.23.1920.975/-1680.23.1680.1027@0.23.1920.975" timestamp="1602097846535" />
+    <state x="812" y="239" width="785" height="592" key="find.popup/0.23.1920.978/-1680.23.1680.1027@0.23.1920.978" timestamp="1602170178472" />
     <state x="770" y="224" width="670" height="676" key="search.everywhere.popup" timestamp="1602168868809">
       <screen x="0" y="23" width="1920" height="978" />
     </state>
