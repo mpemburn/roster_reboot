@@ -15,9 +15,9 @@ trait MigrateFreshSeedOnce
      * After the first run of setUp "migrate:fresh --seed"
      * @return void
      */
-    public function setUp(): void
+    public function migrate(): void
     {
-        parent::setUp();
+//        parent::setUp();
         if (!static::$setUpHasRunOnce) {
             Artisan::call('migrate:fresh');
             Artisan::call(
