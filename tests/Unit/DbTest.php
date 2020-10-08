@@ -1,23 +1,18 @@
 <?php
-namespace Tests\Feature;
+namespace Tests\Unit;
 
+use Database\Seeders\MemberSeeder;
 use Database\Seeders\UserSeeder;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Support\Facades\Bus;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\SeedDatabaseState;
 use Tests\TestCase;
 
-class LaravelTest extends TestCase
+class DbTest extends TestCase
 {
+
     use DatabaseMigrations {
         runDatabaseMigrations as baseRunDatabaseMigrations;
-    }
-
-    public function setUp(): void
-    {
-        parent::setUp();
-        SeedDatabaseState::$seeders = [UserSeeder::class];
-        $this->seedDatabase();
     }
 
     public function runDatabaseMigrations(): void
@@ -26,11 +21,9 @@ class LaravelTest extends TestCase
         $this->artisan('db:seed');
     }
 
-    public function testDatabase(): void
+    public function testTrue(): void
     {
-        $this->assertDatabaseHas('users', [
-            'email' => 'sally@example.com',
-        ]);
+        self::assertTrue(true);
     }
 }
 

@@ -2,13 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d9437d8-c97f-462f-94e9-eccc0c3c0ff1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Feature/LaravelTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/SeedDatabase.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/SeedDatabaseState.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Member.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_07_152100_CreateMembersTable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/MemberSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Integration/UserTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/MigrateFreshSeedOnce.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Unit/MemberModelTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Unit/UserModelTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/LaravelTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/DbTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -151,6 +155,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/tests/Unit" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -159,6 +164,15 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/Unit" />
+      <recent name="$PROJECT_DIR$/database/seeders" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/Unit" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -174,7 +188,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602090592858</updated>
-      <workItem from="1602090594428" duration="2495000" />
+      <workItem from="1602090594428" duration="10445000" />
     </task>
     <servers />
   </component>
@@ -182,13 +196,28 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="843" y="246" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602163131291">
+      <screen x="0" y="23" width="1920" height="978" />
+    </state>
+    <state x="843" y="245" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1920.975/-1680.23.1680.1027@0.23.1920.975" timestamp="1602098318871" />
+    <state x="843" y="246" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1920.978/-1680.23.1680.1027@0.23.1920.978" timestamp="1602163131291" />
+    <state width="221" height="457" key="HiddenNamespacesPopup" timestamp="1602097910344">
+      <screen x="0" y="23" width="1920" height="975" />
+    </state>
+    <state width="221" height="457" key="HiddenNamespacesPopup/0.23.1920.975/-1680.23.1680.1027@0.23.1920.975" timestamp="1602097910344" />
+    <state x="891" y="217" key="NewPhpClassDialog" timestamp="1602162844876">
+      <screen x="0" y="23" width="1920" height="978" />
+    </state>
+    <state x="891" y="216" key="NewPhpClassDialog/0.23.1920.975/-1680.23.1680.1027@0.23.1920.975" timestamp="1602098368485" />
+    <state x="891" y="217" key="NewPhpClassDialog/0.23.1920.978/-1680.23.1680.1027@0.23.1920.978" timestamp="1602162844876" />
+    <state x="891" y="217" key="NewPhpClassDialog/0.23.1920.980/-1680.23.1680.1027@0.23.1920.980" timestamp="1602159053702" />
     <state x="928" y="414" key="NewPhpFileDialog" timestamp="1602094271230">
       <screen x="0" y="23" width="1920" height="975" />
     </state>
     <state x="928" y="414" key="NewPhpFileDialog/0.23.1920.975/-1680.23.1680.1027@0.23.1920.975" timestamp="1602094271230" />
-    <state x="812" y="238" width="586" height="490" key="find.popup" timestamp="1602094638783">
+    <state x="812" y="238" width="586" height="490" key="find.popup" timestamp="1602097846535">
       <screen x="0" y="23" width="1920" height="975" />
     </state>
-    <state x="812" y="238" width="586" height="490" key="find.popup/0.23.1920.975/-1680.23.1680.1027@0.23.1920.975" timestamp="1602094638783" />
+    <state x="812" y="238" width="586" height="490" key="find.popup/0.23.1920.975/-1680.23.1680.1027@0.23.1920.975" timestamp="1602097846535" />
   </component>
 </project>
