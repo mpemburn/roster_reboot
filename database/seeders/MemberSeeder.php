@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Member;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
 class MemberSeeder extends Seeder
 {
@@ -15,11 +14,8 @@ class MemberSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('members')->insert([
-            'active' => 1,
-            'first_name' => 'Jorge',
-            'middle_name' => 'F.X.',
-            'last_name' => 'Jones'
-        ]);
+        Member::factory()
+            ->times(50)
+            ->create();
     }
 }
