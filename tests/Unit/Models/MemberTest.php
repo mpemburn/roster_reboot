@@ -16,7 +16,7 @@ class MemberTest extends TestCase
         $this->member = new Member([
             'active' => 1,
             'first_name' => 'Jorge',
-            'last_name' => 'Jones'
+            'last_name' => 'Jones',
         ]);
     }
 
@@ -25,9 +25,8 @@ class MemberTest extends TestCase
         self::assertEquals('Jorge', $this->member->first_name);
     }
 
-   public function testMemberHasLastName(): void
+    public function testMemberHasLastName(): void
     {
         self::assertEquals('Jones', $this->member->last_name);
     }
-
 }
