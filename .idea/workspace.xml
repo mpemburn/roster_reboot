@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d9437d8-c97f-462f-94e9-eccc0c3c0ff1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/MembersController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/MemberTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_07_152100_CreateMembersTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_07_152100_CreateMembersTable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/Models/MemberTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/Models/MemberTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,14 +144,19 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1iYhmb9HLMUBSVKWmOi05az1LRL" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="BigQuery" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/tests/Unit" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -187,33 +194,37 @@
       <updated>1602090592858</updated>
       <workItem from="1602090594428" duration="13626000" />
       <workItem from="1602167689637" duration="2515000" />
-      <workItem from="1602170241486" duration="2820000" />
+      <workItem from="1602170241486" duration="16912000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="854" y="76" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1602170719038">
       <screen x="0" y="23" width="1920" height="978" />
     </state>
     <state x="854" y="76" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1920.978/-1680.23.1680.1027@0.23.1920.978" timestamp="1602170719038" />
-    <state x="843" y="246" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602166311748">
-      <screen x="0" y="23" width="1920" height="978" />
+    <state x="843" y="247" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602255957681">
+      <screen x="0" y="23" width="1920" height="982" />
     </state>
     <state x="843" y="245" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1920.975/-1680.23.1680.1027@0.23.1920.975" timestamp="1602098318871" />
     <state x="843" y="246" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1920.978/-1680.23.1680.1027@0.23.1920.978" timestamp="1602166311748" />
+    <state x="843" y="247" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1920.982/-1680.23.1680.1027@0.23.1920.982" timestamp="1602255957681" />
     <state width="221" height="457" key="HiddenNamespacesPopup" timestamp="1602097910344">
       <screen x="0" y="23" width="1920" height="975" />
     </state>
     <state width="221" height="457" key="HiddenNamespacesPopup/0.23.1920.975/-1680.23.1680.1027@0.23.1920.975" timestamp="1602097910344" />
-    <state x="891" y="217" key="NewPhpClassDialog" timestamp="1602162844876">
-      <screen x="0" y="23" width="1920" height="978" />
+    <state x="891" y="217" key="NewPhpClassDialog" timestamp="1602239150773">
+      <screen x="0" y="23" width="1920" height="980" />
     </state>
     <state x="891" y="216" key="NewPhpClassDialog/0.23.1920.975/-1680.23.1680.1027@0.23.1920.975" timestamp="1602098368485" />
     <state x="891" y="217" key="NewPhpClassDialog/0.23.1920.978/-1680.23.1680.1027@0.23.1920.978" timestamp="1602162844876" />
-    <state x="891" y="217" key="NewPhpClassDialog/0.23.1920.980/-1680.23.1680.1027@0.23.1920.980" timestamp="1602159053702" />
+    <state x="891" y="217" key="NewPhpClassDialog/0.23.1920.980/-1680.23.1680.1027@0.23.1920.980" timestamp="1602239150773" />
     <state x="928" y="415" key="NewPhpFileDialog" timestamp="1602188038787">
       <screen x="0" y="23" width="1920" height="978" />
     </state>
@@ -223,11 +234,13 @@
       <screen x="0" y="23" width="1920" height="978" />
     </state>
     <state x="614" y="122" key="SettingsEditor/0.23.1920.978/-1680.23.1680.1027@0.23.1920.978" timestamp="1602167085333" />
-    <state x="812" y="239" width="785" height="592" key="find.popup" timestamp="1602188365036">
-      <screen x="0" y="23" width="1920" height="978" />
+    <state x="812" y="239" width="785" height="596" key="find.popup" timestamp="1602249045704">
+      <screen x="0" y="23" width="1920" height="982" />
     </state>
     <state x="812" y="238" width="586" height="490" key="find.popup/0.23.1920.975/-1680.23.1680.1027@0.23.1920.975" timestamp="1602097846535" />
     <state x="812" y="239" width="785" height="592" key="find.popup/0.23.1920.978/-1680.23.1680.1027@0.23.1920.978" timestamp="1602188365036" />
+    <state x="812" y="239" width="785" height="594" key="find.popup/0.23.1920.980/-1680.23.1680.1027@0.23.1920.980" timestamp="1602241771819" />
+    <state x="812" y="239" width="785" height="596" key="find.popup/0.23.1920.982/-1680.23.1680.1027@0.23.1920.982" timestamp="1602249045704" />
     <state x="770" y="224" width="670" height="676" key="search.everywhere.popup" timestamp="1602168868809">
       <screen x="0" y="23" width="1920" height="978" />
     </state>
