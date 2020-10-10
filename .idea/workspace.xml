@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d9437d8-c97f-462f-94e9-eccc0c3c0ff1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/MembersController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Feature/MemberTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Unit/Models/MemberTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/Models/MemberTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MembersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MembersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/MemberFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/MemberFactory.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +190,7 @@
       <updated>1602090592858</updated>
       <workItem from="1602090594428" duration="13626000" />
       <workItem from="1602167689637" duration="2515000" />
-      <workItem from="1602170241486" duration="16912000" />
+      <workItem from="1602170241486" duration="19167000" />
     </task>
     <servers />
   </component>

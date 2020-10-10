@@ -23,8 +23,8 @@ class MemberFactory extends Factory
     public function definition(): array
     {
         return [
-            'active' => rand(0,1),
-            'user_id' => rand(1, 9999),
+            'active' => random_int(0,1),
+            'user_id' => random_int(1, 9999),
             'prefix' => $this->faker->title,
             'first_name' => $this->faker->firstName,
             'middle_name' =>  $this->faker->firstName,
