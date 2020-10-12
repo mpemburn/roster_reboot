@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\MembersController;
-use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
