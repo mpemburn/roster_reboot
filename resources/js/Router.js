@@ -10,7 +10,7 @@ import Dashboard from './views/user/Dashboard/Dashboard';
 const Main = props => (
     <Switch>
         {/*User might LogIn*/}
-        <Route exact path='/' component={Home}/>
+        <Route exact path='/react' component={Home}/>
         {/*User will LogIn*/}
         <Route path='/login' component={Login}/>
         <Route path='/register' component={Register}/>
@@ -21,3 +21,5 @@ const Main = props => (
     </Switch>
 );
 export default Main;
+
+

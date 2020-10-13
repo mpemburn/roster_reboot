@@ -41,28 +41,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
                 @if (Auth::check())
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                    <li class="nav-item dropdown {{ Request::is('member') ? 'active' : '' }}">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Members <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-item"><a href="{{ url('/member') }}"><i class="fa fa-btn fa-users"></i> Members List</a></li>
-                            {{-- TODO: Move this to RolesService --}}
-                            @if (RosterAuth::userIsLeaderOrScribe())
-                                <li class="dropdown-item"><a href="{{ url('/member/details') }}"><i class="fa fa-btn fa-user-plus"></i> Add Member</a></li>
-                                <li class="dropdown-item"><a href="{{ url('/member/missing') }}"><i class="fa fa-btn fa-bars"></i> Missing Data</a></li>
-                            @endif
-                        </ul>
-                    </li>
-                    @if (RosterAuth::userIsLeaderOrScribe())
-                        <li class="nav-item dropdown {{ Request::is('guild') ? 'active' : '' }}">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guilds <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                @foreach(GuildMembership::getGuilds() as $guild)
-                                    <li class="dropdown-item"><a href="{{ url('/guild/manage/') }}/{{ $guild->GuildID }}"><i class="fa fa-btn fa-user-plus"></i> {{ $guild->GuildName }}</a></li>
-                                @endforeach
-                            </ul>
-                        </li>
-                    @endif
+                    Logged in
                 @endif
             </ul>
 
@@ -70,19 +49,8 @@
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">Login</a></li>
-                    <li><a href="{{ url('/register') }}">Register</a></li>
                 @else
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ RosterAuth::getMemberName() }} <span class="caret"></span>
-                        </a>
-
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ url('/member/details') }}/{{ Auth::user()->member_id }}"><i class="fa fa-btn fa-user-circle"></i> My Profile</a></li>
-                            <li><a href="{{ url('/profile/password') }}"><i class="fa fa-btn fa-user-secret"></i> Reset Password</a></li>
-                            <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> Logout</a></li>
-                        </ul>
                     </li>
                 @endif
             </ul>
