@@ -8,6 +8,14 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
+/**
+ * Class User
+ * @package App\Models
+ *
+ * @property $name
+ * @property $email
+ * @property $password
+ */
 class User extends Authenticatable
 {
     use HasFactory, HasRoles, HasApiTokens, Notifiable;

@@ -156,7 +156,7 @@ class RegisterContainer extends Component {
                             </ul></FlashMessage> : ''}
                         <form onSubmit={this.handleSubmit}>
                             <div className="form-group">
-                                <input id="name" type="text" placeholder="Name" className="form-control" required onChange={this.handleName}/>
+                                <input id="name" name="name" type="text" placeholder="Name" className="form-control" required onChange={this.handleName}/>
                             </div>
                             <div className="form-group">
                                 <input id="email" type="email" name="email" placeholder="E-mail" className="form-control" required onChange={this.handleEmail}/>

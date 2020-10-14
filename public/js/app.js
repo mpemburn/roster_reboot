@@ -70452,7 +70452,7 @@ var LoginContainer = /*#__PURE__*/function (_Component) {
 
           location.reload();
         } else {
-          alert("Our System Failed To Register Your Account!");
+          alert('User name or password incorrect.');
         }
       })["catch"](function (error) {
         if (error.response) {
@@ -70951,6 +70951,7 @@ var RegisterContainer = /*#__PURE__*/function (_Component) {
         className: "form-group"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "name",
+        name: "name",
         type: "text",
         placeholder: "Name",
         className: "form-control",

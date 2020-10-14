@@ -58,7 +58,7 @@ class LoginContainer extends Component {
                 location.reload()
             }
             else {
-                alert(`Our System Failed To Register Your Account!`);
+                alert('User name or password incorrect.');
             }
         }).catch(error => {if (error.response) {
             // The request was made and the server responded with a status code that falls out of the range of 2xx
