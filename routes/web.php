@@ -24,7 +24,3 @@ Route::group(['middlewareGroups' => 'web'], function () {
         return view('react');
     });
 });
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
