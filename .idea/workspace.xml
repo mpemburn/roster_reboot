@@ -5,17 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d9437d8-c97f-462f-94e9-eccc0c3c0ff1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/roster.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/roster.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/:memory" beforeDir="false" afterPath="$PROJECT_DIR$/:memory" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -255,18 +247,18 @@
       <screen x="0" y="23" width="1920" height="978" />
     </state>
     <state x="614" y="122" key="SettingsEditor/0.23.1920.978/-1680.23.1680.1027@0.23.1920.978" timestamp="1602167085333" />
-    <state x="335" y="123" width="1428" height="721" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1602673490364">
+    <state x="335" y="123" width="1428" height="721" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1602675882717">
       <screen x="0" y="23" width="1920" height="988" />
     </state>
-    <state x="335" y="123" width="1428" height="721" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1920.988/-1680.23.1680.1027@0.23.1920.988" timestamp="1602673490364" />
-    <state x="812" y="240" width="785" height="600" key="find.popup" timestamp="1602673836432">
+    <state x="335" y="123" width="1428" height="721" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1920.988/-1680.23.1680.1027@0.23.1920.988" timestamp="1602675882717" />
+    <state x="812" y="240" width="785" height="600" key="find.popup" timestamp="1602675397912">
       <screen x="0" y="23" width="1920" height="988" />
     </state>
     <state x="812" y="238" width="586" height="490" key="find.popup/0.23.1920.975/-1680.23.1680.1027@0.23.1920.975" timestamp="1602097846535" />
     <state x="812" y="239" width="785" height="592" key="find.popup/0.23.1920.978/-1680.23.1680.1027@0.23.1920.978" timestamp="1602188365036" />
     <state x="812" y="239" width="785" height="594" key="find.popup/0.23.1920.980/-1680.23.1680.1027@0.23.1920.980" timestamp="1602241771819" />
     <state x="812" y="239" width="785" height="596" key="find.popup/0.23.1920.982/-1680.23.1680.1027@0.23.1920.982" timestamp="1602249045704" />
-    <state x="812" y="240" width="785" height="600" key="find.popup/0.23.1920.988/-1680.23.1680.1027@0.23.1920.988" timestamp="1602673836432" />
+    <state x="812" y="240" width="785" height="600" key="find.popup/0.23.1920.988/-1680.23.1680.1027@0.23.1920.988" timestamp="1602675397912" />
     <state x="770" y="224" width="670" height="676" key="search.everywhere.popup" timestamp="1602168868809">
       <screen x="0" y="23" width="1920" height="978" />
     </state>
