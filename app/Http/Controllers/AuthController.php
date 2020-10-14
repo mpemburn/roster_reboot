@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -11,17 +12,14 @@ class AuthController extends Controller
     /**
      * Create user
      *
-     * @param  [string] name
-     * @param  [string] email
-     * @param  [string] password
-     * @param  [string] password_confirmation
-     * @return [string] message
+     * @param Request $request
+     * @return JsonResponse
      */
-    public function signup(Request $request)
+    public function signup(Request $request): JsonResponse
     {
         $request->validate([
             'name' => 'required|string',
-            'email' => 'required|string|email',
+            'email' => 'required|string|email|unique:users',
             'password' => 'min:6|required_with:password_confirm|same:password_confirm',
             'password_confirm' => 'min:6'
         ]);
