@@ -71084,7 +71084,7 @@ var Home = /*#__PURE__*/function (_Component) {
           user: AppState.user
         });
       }
-    } // 4.1 newR0sterMark
+    } // 4.1
 
   }, {
     key: "render",

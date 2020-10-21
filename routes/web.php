@@ -14,9 +14,6 @@ use App\Http\Controllers\MembersController;
 |
 */
 //
-//Route::get('/', function () {
-//    return view('index');
-//});
 
 Route::group(['middlewareGroups' => 'web'], function () {
     Route::post('member', MembersController::class . '@store');

@@ -17,7 +17,7 @@ class Home extends Component {
             this.setState({ isLoggedIn: AppState.isLoggedIn, user: AppState.user });
         }
     }
-// 4.1 newR0sterMark
+// 4.1
     render() {
         return (
             <div>
