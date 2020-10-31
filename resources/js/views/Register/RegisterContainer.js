@@ -50,7 +50,12 @@ class RegisterContainer extends Component {
         this.setState({formSubmitting: true});
         ReactDOM.findDOMNode(this).scrollIntoView();
         let userData = this.state.user;
-        axios.post("/api/auth/signup", userData)
+
+        axios.post("/api/auth/signup", userData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
             .then(response => {
                 return response;
             }).then(json => {
@@ -103,7 +108,7 @@ class RegisterContainer extends Component {
         let value = e.target.value;
         this.setState(prevState => ({
             user: {
-                ...prevState.user, first_name: value
+                ...prevState.user, name: value
             }
         }));
     }
@@ -165,7 +170,7 @@ class RegisterContainer extends Component {
                                 <input id="password" type="password" name="password" placeholder="Password" className="form-control" required onChange={this.handlePassword}/>
                             </div>
                             <div className="form-group">
-                                <input id="password_confirm" type="password" name="password_confirm" placeholder="Confirm Password" className="form-control" required onChange={this.handlePasswordConfirm} />
+                                <input id="password_confirmation" type="password" name="password_confirmation" placeholder="Confirm Password" className="form-control" required onChange={this.handlePasswordConfirm} />
                             </div>
                             <button type="submit" name="singlebutton" className="btn btn-default btn-lg  btn-block mb10" disabled={this.state.formSubmitting ? "disabled" : ""}>Create Account</button>
                         </form>

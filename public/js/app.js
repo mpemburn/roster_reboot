@@ -70809,7 +70809,11 @@ var RegisterContainer = /*#__PURE__*/function (_Component) {
       });
       react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.findDOMNode(this).scrollIntoView();
       var userData = this.state.user;
-      axios.post("/api/auth/signup", userData).then(function (response) {
+      axios.post("/api/auth/signup", userData, {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }).then(function (response) {
         return response;
       }).then(function (json) {
         if (json.data.success) {
@@ -70870,7 +70874,7 @@ var RegisterContainer = /*#__PURE__*/function (_Component) {
       this.setState(function (prevState) {
         return {
           user: _objectSpread(_objectSpread({}, prevState.user), {}, {
-            first_name: value
+            name: value
           })
         };
       });
@@ -70980,9 +70984,9 @@ var RegisterContainer = /*#__PURE__*/function (_Component) {
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        id: "password_confirm",
+        id: "password_confirmation",
         type: "password",
-        name: "password_confirm",
+        name: "password_confirmation",
         placeholder: "Confirm Password",
         className: "form-control",
         required: true,
