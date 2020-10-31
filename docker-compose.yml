@@ -44,6 +44,11 @@ services:
     networks:
       - asw-roster
 
+  php:
+    image: php:7.4
+    volumes:
+      - ./docker-compose/php:/usr/local/etc/php/conf.d
+
 networks:
   asw-roster:
     driver: bridge
