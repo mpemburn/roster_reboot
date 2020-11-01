@@ -4,6 +4,6 @@
 [remote]
 3.128.62.188 ansible_ssh_private_key_file=/home/vagrant/.ssh/asw_roster.pem
 
-[all:vars]
-ansible_connection=ssh
-ansible_user=ubuntu
+[sandbox]
+3.131.34.111 ansible_ssh_private_key_file=/home/vagrant/.ssh/ec2_sandbox.pem
+

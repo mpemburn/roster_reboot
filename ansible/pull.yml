@@ -1,0 +1,12 @@
+- hosts: sandbox
+  become: yes
+  become_user: root
+  vars:
+    ansible_user: ubuntu
+  tasks:
+    - name: Pull origin master
+      git:
+        repo: https://github.com/mpemburn/roster_reboot.git
+        dest: /var/www/roster
+        update: yes
+        version: master

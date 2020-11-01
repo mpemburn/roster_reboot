@@ -1,0 +1,26 @@
+- hosts: sandbox
+  become: yes
+  become_user: root
+  vars:
+    ansible_user: ubuntu
+  tasks:
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: true
+      notify:
+          - Start Nginx
+
+    - name: Clone ASW Roster into /var/www/roster
+      git:
+        repo: https://github.com/mpemburn/roster_reboot.git
+        version: master
+        dest: /var/www/roster
+
+  handlers:
+    - name: Start Nginx
+      service:
+        name: nginx
+        state: started
+
