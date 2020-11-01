@@ -50,4 +50,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         config.hostmanager.manage_host = true
         config.hostmanager.aliases = settings['sites'].map { |site| site['map'] }
     end
+
+    config.vm.provision "ansible" do |ansible|
+        ansible.playbook = "playbook.yml"
+    end
+
 end
