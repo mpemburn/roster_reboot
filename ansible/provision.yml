@@ -3,24 +3,22 @@
   become_user: root
   vars:
     ansible_user: ubuntu
+
   tasks:
-    - name: Install Nginx
+    - name: Install Packages
       apt:
-        name: nginx
+        pkg:
+          - php7.4
+          - php7.4-fpm
+          - php7.4-cli
+          - php-mbstring
+          - php-xml
+          - unzip
         state: present
-        update_cache: true
-      notify:
-          - Start Nginx
 
     - name: Clone ASW Roster into /var/www/roster
       git:
         repo: https://github.com/mpemburn/roster_reboot.git
         version: master
         dest: /var/www/roster
-
-  handlers:
-    - name: Start Nginx
-      service:
-        name: nginx
-        state: started
 

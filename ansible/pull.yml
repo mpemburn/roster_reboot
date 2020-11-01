@@ -10,3 +10,8 @@
         dest: /var/www/roster
         update: yes
         version: master
+
+    - name: Composer install
+      composer: command=install working_dir=/var/www/roster optimize_autoloader=no
+
+
