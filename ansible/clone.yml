@@ -1,0 +1,18 @@
+- hosts: "{{ env }}"
+  become: yes
+  become_user: root
+  vars:
+    ansible_user: ubuntu
+
+  tasks:
+    - name: Clone ASW Roster into /var/www/roster
+      git:
+        repo: https://github.com/mpemburn/roster_reboot.git
+        version: master
+        dest: /var/www/roster
+
+    - name: Create composer vendor directory
+      file:
+        path: /var/www/roster/vendor
+        state: directory
+

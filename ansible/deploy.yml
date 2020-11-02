@@ -1,8 +1,10 @@
-- hosts: sandbox
+# ansible-playbook -i ./hosts -e env=sandbox deploy.yml
+- hosts: "{{ env }}"
   become: yes
   become_user: root
   vars:
     ansible_user: ubuntu
+
   tasks:
     - name: Pull origin master
       git:
@@ -12,6 +14,9 @@
         version: master
 
     - name: Composer install
-      composer: command=install working_dir=/var/www/roster optimize_autoloader=no
+      shell: composer install
+      args:
+        chdir: /var/www/roster
 
 
+# TODO: Add .env file, run migrations

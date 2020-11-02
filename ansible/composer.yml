@@ -1,4 +1,4 @@
-- hosts: sandbox
+- hosts: "{{ env }}"
   become: yes
   become_user: root
   vars:
@@ -6,12 +6,18 @@
   tasks:
     - name: Download composer
       get_url:
-        url: https://getcomposer.org/download/1.10.17/composer.phar
-        dest: /tmp
+        url: https://getcomposer.org/installer
+        dest: /tmp/installer
+      tags: composer
+
+    - name: Install composer
+      shell: cat /tmp/installer | php -- --install-dir=/usr/local/bin
+      args:
+        creates: /usr/local/bin/composer
       tags: composer
 
     - name: Rename composer.phar to composer
-      shell: mv /tmp/composer.phar /usr/local/bin/composer
+      shell: mv /usr/local/bin/composer.phar /usr/local/bin/composer
       args:
         creates: /usr/local/bin/composer
       tags: composer

@@ -1,24 +1,3 @@
-- hosts: sandbox
-  become: yes
-  become_user: root
-  vars:
-    ansible_user: ubuntu
-
-  tasks:
-    - name: Install Packages
-      apt:
-        pkg:
-          - php7.4
-          - php7.4-fpm
-          - php7.4-cli
-          - php-mbstring
-          - php-xml
-          - unzip
-        state: present
-
-    - name: Clone ASW Roster into /var/www/roster
-      git:
-        repo: https://github.com/mpemburn/roster_reboot.git
-        version: master
-        dest: /var/www/roster
-
+#- import_playbook: clone.yml
+- import_playbook: nginx.yml
+#- import_playbook: php.yml

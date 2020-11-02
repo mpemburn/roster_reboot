@@ -1,8 +1,12 @@
-- hosts: sandbox
+- hosts: "{{ env }}"
   become: yes
   become_user: root
   vars:
     ansible_user: ubuntu
+    site_name: roster
+    nginx_path: /etc/nginx
+    nginx_sites_available: "{{ nginx_path }}/sites-available"
+    nginx_sites_enabled: "{{ nginx_path }}/sites-enabled"
 
   tasks:
     - name: Install Nginx
@@ -10,6 +14,17 @@
         name: nginx
         state: present
         update_cache: true
+
+    - name: Setup Nginx vhost
+      template:
+        src=./templates/{{ site_name }}.conf
+        dest={{ nginx_sites_available }}/{{ site_name }}.org
+
+    - name: Create Symbolic Link
+      file:
+        src: "{{ nginx_sites_available }}/{{ site_name }}.org"
+        dest: "{{ nginx_sites_enabled }}/{{ site_name }}.org"
+        state: link
       notify:
         - Start Nginx
 
@@ -17,4 +32,4 @@
     - name: Start Nginx
       service:
         name: nginx
-        state: started
+        state: restarted
