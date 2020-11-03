@@ -1,0 +1,14 @@
+- hosts: "{{ env }}"
+  become: yes
+  become_user: root
+  vars:
+    ansible_user: ubuntu
+
+  tasks:
+    - name: Install CLI Packages
+      apt:
+        name: "{{ packages }}"
+      vars:
+        packages:
+          - ccrypt
+          - unzip
