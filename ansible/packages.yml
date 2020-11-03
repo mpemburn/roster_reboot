@@ -5,10 +5,11 @@
     ansible_user: ubuntu
 
   tasks:
-    - name: Install CLI Packages
+    - name: Install Packages
       apt:
         name: "{{ packages }}"
       vars:
         packages:
+          - mariadb-server
           - ccrypt
           - unzip
