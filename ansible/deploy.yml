@@ -13,10 +13,12 @@
         update: yes
         version: master
 
-    - name: Composer install
-      shell: composer install
-      args:
-        chdir: /var/www/roster
+# TODO: Add this back once we figure out how to do it!
+#    - name: Composer install
+#      shell: composer install
+#      args:
+#        chdir: /var/www/roster
 
+    - name: Run migrations
+      shell: php /var/www/roster/artisan migrate
 
-# TODO: Add .env file, run migrations

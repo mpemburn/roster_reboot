@@ -14,5 +14,12 @@
     - name: Create composer vendor directory
       file:
         path: /var/www/roster/vendor
+        mode: 0775
+        state: directory
+
+    - name: Set permissions on storage directory
+      file:
+        path: /var/www/roster/storage
+        mode: 0775
         state: directory
 
