@@ -1,6 +1,7 @@
 - hosts: "{{ env }}"
   become: yes
   become_user: root
+  gather_facts: false
   vars:
     ansible_user: ubuntu
     site_name: roster
@@ -15,10 +16,20 @@
         state: present
         update_cache: true
 
+    - name: Remove default config
+      file:
+        path: "{{ nginx_sites_available }}/default"
+        state: absent
+
+    - name: Remove default sybolic link for default
+      file:
+        path: "{{ nginx_sites_enabled }}/default"
+        state: absent
+
     - name: Setup Nginx vhost
       template:
-        src=./templates/{{ site_name }}.conf
-        dest={{ nginx_sites_available }}/{{ site_name }}.org
+        src: "./templates/{{ site_name }}.conf"
+        dest: "{{ nginx_sites_available }}/{{ site_name }}.org"
 
     - name: Create Symbolic Link
       file:
@@ -26,10 +37,10 @@
         dest: "{{ nginx_sites_enabled }}/{{ site_name }}.org"
         state: link
       notify:
-        - Start Nginx
+        - Restart Nginx
 
   handlers:
-    - name: Start Nginx
+    - name: Restart Nginx
       service:
         name: nginx
         state: restarted

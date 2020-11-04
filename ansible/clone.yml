@@ -1,25 +1,33 @@
 - hosts: "{{ env }}"
   become: yes
   become_user: root
+  gather_facts: false
   vars:
     ansible_user: ubuntu
+    group: www-data
+    project_dir: /var/www/roster
 
   tasks:
-    - name: Clone ASW Roster into /var/www/roster
+    - name: Clone ASW Roster into project directory
       git:
         repo: https://github.com/mpemburn/roster_reboot.git
         version: master
-        dest: /var/www/roster
+        dest: "{{ project_dir }}"
 
     - name: Create composer vendor directory
       file:
-        path: /var/www/roster/vendor
+        path: "{{ project_dir }}/vendor"
+        owner: "{{ ansible_user }}"
+        group: "{{ group }}"
         mode: 0775
         state: directory
 
     - name: Set permissions on storage directory
       file:
-        path: /var/www/roster/storage
+        path: "{{ project_dir }}/storage"
+        owner: "{{ ansible_user }}"
+        group: "{{ group }}"
         mode: 0775
+        recurse: yes
         state: directory
 

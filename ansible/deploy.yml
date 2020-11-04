@@ -2,23 +2,26 @@
 - hosts: "{{ env }}"
   become: yes
   become_user: root
+  gather_facts: false
   vars:
     ansible_user: ubuntu
+    project_dir: /var/www/roster
 
   tasks:
     - name: Pull origin master
       git:
         repo: https://github.com/mpemburn/roster_reboot.git
-        dest: /var/www/roster
+        dest: "{{ project_dir }}"
         update: yes
         version: master
 
-# TODO: Add this back once we figure out how to do it!
-#    - name: Composer install
-#      shell: composer install
-#      args:
-#        chdir: /var/www/roster
+    - name: Composer install
+      shell: composer install -vvv
+      args:
+        chdir: "{{ project_dir }}"
 
     - name: Run migrations
-      shell: php /var/www/roster/artisan migrate
+      shell: php artisan migrate
+      args:
+        chdir: "{{ project_dir }}"
 
