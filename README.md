@@ -1,4 +1,4 @@
-##ASW Membership Roster Reboot
+## ASW Membership Roster Reboot
 
 by Mark Pemburn -- mpemburn@gmail.com
 
@@ -10,5 +10,5 @@ The **ASW Membership Roster** updated to Laravel 8.x.
 
 The **ASW Membership Roster** is open-sourced software licensed under the MIT license.
 
-##Developers:
+## Developers:
 Please refer to the **ASW Membership Roster Developer Notes** in `wiki/dev_environment.md`
