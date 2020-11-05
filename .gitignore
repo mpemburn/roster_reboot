@@ -18,3 +18,4 @@ workspace.xml
 /.idea/php.xml
 /prodenv
 /prodenv.gpg
+/ansible/vpwd

@@ -5,18 +5,18 @@ ENVIRONMENTS=( ansible/hosts/* )
 ENVIRONMENTS=( "${ENVIRONMENTS[@]##*/}" )
 
 show_usage() {
-  echo "Usage: deploy <environment> <site name> [options]
+  echo "Usage: provision <environment> <site name> [options]
 
-<environment> is the environment to deploy to ("staging", "production", etc)
+<environment> is the environment to provision to ("staging", "production", etc)
 [options] is any number of parameters that will be passed to ansible-playbook
 
 Available environments:
 `( IFS=$'\n'; echo "${ENVIRONMENTS[*]}" )`
 
 Examples:
-  deploy staging
-  deploy production
-  deploy staging -vv -T 60
+  provision staging
+  provision production
+  provision staging -vv -T 60
 "
 }
 
@@ -30,7 +30,8 @@ done
 ENV="$1"; shift
 EXTRA_PARAMS=$@
 HOSTS_FILE="hosts/$ENV"
-DEPLOY_CMD="ansible-playbook deploy.yml -i $HOSTS_FILE -e env=$ENV $EXTRA_PARAMS"
+PASSWORD_FILE=vpwd
+PROVISION_CMD="ansible-playbook --vault-password-file $PASSWORD_FILE provision.yml -i $HOSTS_FILE -e env=$ENV $EXTRA_PARAMS"
 
 cd ./ansible
 
@@ -42,4 +43,4 @@ if [[ ! -e $HOSTS_FILE ]]; then
   exit 1
 fi
 
-$DEPLOY_CMD
+$PROVISION_CMD
