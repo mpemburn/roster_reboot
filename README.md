@@ -11,4 +11,4 @@ The **ASW Membership Roster** updated to Laravel 8.x.
 The **ASW Membership Roster** is open-sourced software licensed under the MIT license.
 
 ## Developers:
-Please refer to the **ASW Membership Roster Developer Notes** in `wiki/dev_environment.md`
+Please refer to the [**ASW Membership Roster Developer Notes**](wiki/dev_environment.md)
