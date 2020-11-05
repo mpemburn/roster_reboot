@@ -12,11 +12,12 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 .DS_Store
+prodenv
+prodenv.v
 /remote_config
 workspace.xml
 /.idea/roster.iml
 /.idea/php.xml
-prodenv.v
 /ansible/vpwd
 /ansible/hosts/staging
 /ansible/hosts/production
