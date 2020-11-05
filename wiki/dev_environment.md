@@ -1,5 +1,7 @@
+#ASW Membership Roster Developer Notes
+
 ##Overview
-The ASW Roster Version 2 uses a Larvel 8.x framework. It is designed to run on an Amazon EC2 instance which can be fully provisions with included Ansible playbooks via the `provision.sh` and `deploy.sh` bash scripts. 
+The **ASW Membership Roster** Version 2 uses a Larvel 8.x framework. It is designed to run on an Amazon EC2 instance which can be fully provisions with included Ansible playbooks via the `provision.sh` and `deploy.sh` bash scripts. 
 
 ##EC2 Setup
 Assuming you will be using Amazon EC2, it will be necessary to expose the `HTTP`, `HTTPS`, and `SSH` ports in the Security Group associated with your instance.
@@ -30,4 +32,11 @@ Provisioning is handled by `provision.sh` script in the project root.  It has on
 - `$ ./provision.sh staging` 
 - `$ ./provision.sh staging -v`
 
-There is at least one Ansible Vault encrypted file (the .env file) that requires a password and this should be stored in a file in the `ansible` directory called `vpwd`.  This file is `git` ignored.
+You will need to create a `.env` file to be used on your remote instances.  This should contain all of the secret keys need (e.g., database user and password).  To encrypt the file via Ansible, use the following method:
+
+- In the project root, create your production `.env` file and name it `prodenv.v`
+- Encrypt it using `ansible-vault --encrypt prodenv.v`
+- Enter a Vault password.
+- Create a file in the `ansible` directory called `vpwd` and save the password in it.
+
+NOTE: Make sure that both `prodenv.v` and `ansible/vpwd` are listed in `.gitignore`. 

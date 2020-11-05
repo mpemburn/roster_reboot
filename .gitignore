@@ -16,8 +16,7 @@ yarn-error.log
 workspace.xml
 /.idea/roster.iml
 /.idea/php.xml
-/prodenv
-/prodenv.gpg
+/prodenv.v
 /ansible/vpwd
 /ansible/hosts/staging
 /ansible/hosts/production
