@@ -21,3 +21,4 @@ workspace.xml
 /ansible/vpwd
 /ansible/hosts/staging
 /ansible/hosts/production
+/:memory

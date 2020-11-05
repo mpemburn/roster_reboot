@@ -31,3 +31,7 @@
         recurse: yes
         state: directory
 
+    - name: Install Passport (to generate keys)
+      shell: php artisan passport:install
+      args:
+        chdir: "{{ project_dir }}"
