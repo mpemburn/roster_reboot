@@ -19,3 +19,5 @@ workspace.xml
 /prodenv
 /prodenv.gpg
 /ansible/vpwd
+/ansible/hosts/staging
+/ansible/hosts/production
