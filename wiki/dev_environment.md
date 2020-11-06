@@ -17,7 +17,7 @@ This setup also requires the `community.general.composer` plugin. To install it 
 
 `$ ansible-galaxy collection install community.general`
 
-The `ansible/hosts` directory should contain inventory files for every environment you need (usually `development`, `staging`, and `production`). For remote boxes, you will need to point to the point to the private key:
+The `ansible/hosts` directory should contain inventory files for every environment you need (usually `development`, `staging`, and `production`). For remote boxes, you will need to point to the private key:
 
 ```
 [production]
