@@ -11,7 +11,7 @@ The default development environment is **Vagrant** (https://www.vagrantup.com/do
 
 You will need to add any SSH private keys needed to access your remote boxes to the `~/.ssh` directory on the **Vagrant** instance, as these will be referenced by the **Ansible** `hosts` inventory files.
 ## Ansible Setup
-Once you have the **Vagrant** environment set up, `ssh` to the vagrant box and install **Ansible** (https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+Once you have the **Vagrant** environment set up, `ssh` to the vagrant box (`vagrant ssh`) and install **Ansible** (https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 
 This setup also requires the `community.general.composer` plugin. To install it use: 
 
