@@ -18,7 +18,7 @@ class SeedStatesTable extends Migration
     public function up(): void
     {
         if (Schema::hasTable('states')) {
-            $data = $this->getCsv('database/data/states.csv');
+            $data = $this->getCsv('./database/data/states.csv');
             $data->each(static function ($row) {
                 State::create($row->toArray());
             });

@@ -16,7 +16,7 @@ class SeedWheelsTable extends Migration
     public function up()
     {
         if (Schema::hasTable('wheels')) {
-            $data = $this->getCsv('database/data/wheels.csv');
+            $data = $this->getCsv('./database/data/wheels.csv');
             $data->each(static function ($row) {
                 Wheel::create($row->toArray());
             });

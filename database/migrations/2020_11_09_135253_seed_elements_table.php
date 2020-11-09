@@ -17,7 +17,7 @@ class SeedElementsTable extends Migration
     public function up(): void
     {
         if (Schema::hasTable('elements')) {
-            $data = $this->getCsv('database/data/elements.csv');
+            $data = $this->getCsv('./database/data/elements.csv');
             $data->each(static function ($row) {
                 Element::create($row->toArray());
             });
