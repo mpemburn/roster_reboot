@@ -23,7 +23,9 @@ CREATE TABLE `addresses` (
   `city` varchar(100) NOT NULL,
   `state` varchar(2) NOT NULL,
   `zip` varchar(20) NOT NULL,
-  UNIQUE KEY `unq_addresses_id` (`id`)
+  UNIQUE KEY `unq_addresses_id` (`id`),
+  KEY `fk_addresses_states` (`state`),
+  CONSTRAINT `fk_addresses_states` FOREIGN KEY (`state`) REFERENCES `states` (`abbreviation`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -42,6 +44,15 @@ CREATE TABLE `covens` (
   CONSTRAINT `fk_covens_elements` FOREIGN KEY (`element`) REFERENCES `elements` (`element`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_covens_tools` FOREIGN KEY (`tool`) REFERENCES `tools` (`tool`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_covens_wheels` FOREIGN KEY (`wheel`) REFERENCES `wheels` (`wheel`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `degrees` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `degree` varchar(20) NOT NULL,
+  `initiation_date` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -70,7 +81,7 @@ CREATE TABLE `failed_jobs` (
 CREATE TABLE `members` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `active` tinyint(4) NOT NULL,
-  `user_id` bigint(20) DEFAULT 0,
+  `user_id` int(11) DEFAULT 0,
   `prefix` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `first_name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `middle_name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -83,10 +94,7 @@ CREATE TABLE `members` (
   `place_of_birth` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `coven_id` bigint(20) unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `unq_members_coven_id` (`coven_id`),
-  CONSTRAINT `fk_members_covens` FOREIGN KEY (`coven_id`) REFERENCES `covens` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -103,6 +111,45 @@ CREATE TABLE `members_addresses` (
   CONSTRAINT `fk_members_addresses_address_types` FOREIGN KEY (`address_type_id`) REFERENCES `address_types` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_members_addresses_addresses` FOREIGN KEY (`address_id`) REFERENCES `addresses` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_members_addresses_members` FOREIGN KEY (`member_id`) REFERENCES `members` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `members_covens` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `member_id` bigint(20) unsigned NOT NULL,
+  `coven_id` bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_members_covens_members` (`member_id`),
+  KEY `fk_members_covens_covens` (`coven_id`),
+  CONSTRAINT `fk_members_covens_covens` FOREIGN KEY (`coven_id`) REFERENCES `covens` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_members_covens_members` FOREIGN KEY (`member_id`) REFERENCES `members` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `members_degrees` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `member_id` bigint(20) unsigned NOT NULL,
+  `degree_id` bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unq_members_degrees_member_id` (`member_id`),
+  KEY `fk_members_degrees_degrees` (`degree_id`),
+  CONSTRAINT `fk_members_degrees_degrees` FOREIGN KEY (`degree_id`) REFERENCES `degrees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_members_degrees_members` FOREIGN KEY (`member_id`) REFERENCES `members` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `members_notes` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `member_id` bigint(20) unsigned NOT NULL,
+  `note_id` bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_members_notes_members` (`member_id`),
+  KEY `fk_members_notes_notes` (`note_id`),
+  CONSTRAINT `fk_members_notes_members` FOREIGN KEY (`member_id`) REFERENCES `members` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_members_notes_notes` FOREIGN KEY (`note_id`) REFERENCES `notes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -148,6 +195,14 @@ CREATE TABLE `model_has_roles` (
   KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`),
   CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `notes` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `note` text DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -261,6 +316,18 @@ CREATE TABLE `roles` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `states` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `abbreviation` varchar(2) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `country` varchar(2) DEFAULT 'US',
+  `is_local` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unq_states_abbreviation` (`abbreviation`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tools` (
   `tool` varchar(20) DEFAULT NULL,
   UNIQUE KEY `unq_tools_tool` (`tool`)
@@ -305,3 +372,5 @@ INSERT INTO `migrations` VALUES (8,'2016_06_01_000003_create_oauth_refresh_token
 INSERT INTO `migrations` VALUES (9,'2016_06_01_000004_create_oauth_clients_table',2);
 INSERT INTO `migrations` VALUES (10,'2016_06_01_000005_create_oauth_personal_access_clients_table',2);
 INSERT INTO `migrations` VALUES (11,'2020_10_07_152100_CreateMembersTable',3);
+INSERT INTO `migrations` VALUES (12,'2020_10_07_152100_create_members_table',4);
+INSERT INTO `migrations` VALUES (20,'2020_11_09_114222_seed_states_table',5);
