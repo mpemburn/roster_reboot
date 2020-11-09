@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="asw_roster.sql" id="Project_5d4" database="MySql" >
+	<schema name="Default" >
+		<table name="addresses" >
+			<column name="id" type="bigint" jt="-5" mandatory="y" autoincrement="y" />
+			<column name="description" type="varchar" length="50" jt="12" />
+			<column name="adddress_1" type="varchar" length="100" jt="12" mandatory="y" />
+			<column name="adddress_2" type="varchar" length="100" jt="12" />
+			<column name="adddress_3" type="varchar" length="100" jt="12" />
+			<column name="city" type="varchar" length="100" jt="12" mandatory="y" />
+			<column name="state" type="varchar" length="2" jt="12" mandatory="y" />
+			<column name="country" type="char" length="2" jt="1" >
+				<defo><![CDATA['US']]></defo>
+			</column>
+			<column name="zip" type="char" length="20" jt="1" mandatory="y" />
+			<column name="created_at" type="datetime" jt="93" />
+			<column name="updated_at" type="datetime" jt="93" />
+		</table>
+		<table name="failed_jobs" >
+			<column name="id" type="bigint" jt="-5" mandatory="y" unsigned="y" autoincrement="y" />
+			<column name="uuid" type="varchar" length="255" jt="12" mandatory="y" />
+			<column name="connection" type="text" jt="-1" mandatory="y" />
+			<column name="queue" type="text" jt="-1" mandatory="y" />
+			<column name="payload" type="longtext" jt="-1" mandatory="y" />
+			<column name="exception" type="longtext" jt="-1" mandatory="y" />
+			<column name="failed_at" type="timestamp" jt="93" mandatory="y" >
+				<defo><![CDATA[current_timestamp()]]></defo>
+			</column>
+			<index name="failed_jobs_uuid_unique" unique="NORMAL" >
+				<column name="uuid" />
+			</index>
+		</table>
+		<table name="member_address" >
+			<column name="id" type="bigint" jt="-5" mandatory="y" autoincrement="y" />
+			<column name="member_id" type="bigint" jt="-5" mandatory="y" />
+			<column name="address_id" type="bigint" jt="-5" mandatory="y" />
+			<index name="unq_member_address_address_id" unique="UNIQUE_KEY" >
+				<column name="address_id" />
+			</index>
+			<index name="unq_member_address_member_id" unique="UNIQUE_KEY" >
+				<column name="member_id" />
+			</index>
+		</table>
+		<table name="members" >
+			<column name="id" type="bigint" jt="-5" mandatory="y" unsigned="y" autoincrement="y" />
+			<column name="active" type="tinyint" jt="-6" mandatory="y" />
+			<column name="user_id" type="int" jt="4" >
+				<defo><![CDATA[0]]></defo>
+			</column>
+			<column name="prefix" type="varchar" length="20" jt="12" />
+			<column name="first_name" type="varchar" length="50" jt="12" mandatory="y" />
+			<column name="middle_name" type="varchar" length="50" jt="12" mandatory="y" />
+			<column name="last_name" type="varchar" length="50" jt="12" mandatory="y" />
+			<column name="suffix" type="varchar" length="20" jt="12" />
+			<column name="member_since_date" type="date" jt="91" />
+			<column name="member_end_date" type="date" jt="91" />
+			<column name="date_of_birth" type="date" jt="91" />
+			<column name="time_of_birth" type="time" jt="92" />
+			<column name="created_at" type="timestamp" jt="93" />
+			<column name="updated_at" type="timestamp" jt="93" />
+			<index name="unq_members_user_id" unique="UNIQUE_KEY" >
+				<column name="user_id" />
+			</index>
+		</table>
+		<table name="migrations" >
+			<column name="id" type="int" jt="4" mandatory="y" unsigned="y" autoincrement="y" />
+			<column name="migration" type="varchar" length="255" jt="12" mandatory="y" />
+			<column name="batch" type="int" jt="4" mandatory="y" />
+		</table>
+		<table name="model_has_permissions" >
+			<column name="permission_id" type="bigint" jt="-5" mandatory="y" unsigned="y" />
+			<column name="model_type" type="varchar" length="255" jt="12" mandatory="y" />
+			<column name="model_id" type="bigint" jt="-5" mandatory="y" unsigned="y" />
+			<index name="Primary" unique="PRIMARY_KEY" >
+				<column name="permission_id" />
+				<column name="model_id" />
+				<column name="model_type" />
+			</index>
+			<index name="model_has_permissions_model_id_model_type_index" unique="NORMAL" >
+				<column name="model_id" />
+				<column name="model_type" />
+			</index>
+		</table>
+		<table name="model_has_roles" >
+			<column name="role_id" type="bigint" jt="-5" mandatory="y" unsigned="y" />
+			<column name="model_type" type="varchar" length="255" jt="12" mandatory="y" />
+			<column name="model_id" type="bigint" jt="-5" mandatory="y" unsigned="y" />
+			<index name="Primary" unique="PRIMARY_KEY" >
+				<column name="role_id" />
+				<column name="model_id" />
+				<column name="model_type" />
+			</index>
+			<index name="model_has_roles_model_id_model_type_index" unique="NORMAL" >
+				<column name="model_id" />
+				<column name="model_type" />
+			</index>
+		</table>
+		<table name="oauth_access_tokens" >
+			<column name="id" type="varchar" length="100" jt="12" mandatory="y" />
+			<column name="user_id" type="bigint" jt="-5" unsigned="y" />
+			<column name="client_id" type="bigint" jt="-5" mandatory="y" unsigned="y" />
+			<column name="name" type="varchar" length="255" jt="12" />
+			<column name="scopes" type="text" jt="-1" />
+			<column name="revoked" type="tinyint" jt="-6" mandatory="y" />
+			<column name="created_at" type="timestamp" jt="93" />
+			<column name="updated_at" type="timestamp" jt="93" />
+			<column name="expires_at" type="datetime" jt="93" />
+			<index name="oauth_access_tokens_user_id_index" unique="NORMAL" >
+				<column name="user_id" />
+			</index>
+		</table>
+		<table name="oauth_auth_codes" >
+			<column name="id" type="varchar" length="100" jt="12" mandatory="y" />
+			<column name="user_id" type="bigint" jt="-5" mandatory="y" unsigned="y" />
+			<column name="client_id" type="bigint" jt="-5" mandatory="y" unsigned="y" />
+			<column name="scopes" type="text" jt="-1" />
+			<column name="revoked" type="tinyint" jt="-6" mandatory="y" />
+			<column name="expires_at" type="datetime" jt="93" />
+			<index name="oauth_auth_codes_user_id_index" unique="NORMAL" >
+				<column name="user_id" />
+			</index>
+		</table>
+		<table name="oauth_clients" >
+			<column name="id" type="bigint" jt="-5" mandatory="y" unsigned="y" autoincrement="y" />
+			<column name="user_id" type="bigint" jt="-5" unsigned="y" />
+			<column name="name" type="varchar" length="255" jt="12" mandatory="y" />
+			<column name="secret" type="varchar" length="100" jt="12" />
+			<column name="provider" type="varchar" length="255" jt="12" />
+			<column name="redirect" type="text" jt="-1" mandatory="y" />
+			<column name="personal_access_client" type="tinyint" jt="-6" mandatory="y" />
+			<column name="password_client" type="tinyint" jt="-6" mandatory="y" />
+			<column name="revoked" type="tinyint" jt="-6" mandatory="y" />
+			<column name="created_at" type="timestamp" jt="93" />
+			<column name="updated_at" type="timestamp" jt="93" />
+			<index name="oauth_clients_user_id_index" unique="NORMAL" >
+				<column name="user_id" />
+			</index>
+		</table>
+		<table name="oauth_personal_access_clients" >
+			<column name="id" type="bigint" jt="-5" mandatory="y" unsigned="y" autoincrement="y" />
+			<column name="client_id" type="bigint" jt="-5" mandatory="y" unsigned="y" />
+			<column name="created_at" type="timestamp" jt="93" />
+			<column name="updated_at" type="timestamp" jt="93" />
+		</table>
+		<table name="oauth_refresh_tokens" >
+			<column name="id" type="varchar" length="100" jt="12" mandatory="y" />
+			<column name="access_token_id" type="varchar" length="100" jt="12" mandatory="y" />
+			<column name="revoked" type="tinyint" jt="-6" mandatory="y" />
+			<column name="expires_at" type="datetime" jt="93" />
+			<index name="oauth_refresh_tokens_access_token_id_index" unique="NORMAL" >
+				<column name="access_token_id" />
+			</index>
+		</table>
+		<table name="password_resets" >
+			<column name="email" type="varchar" length="255" jt="12" mandatory="y" />
+			<column name="token" type="varchar" length="255" jt="12" mandatory="y" />
+			<column name="created_at" type="timestamp" jt="93" />
+			<index name="password_resets_email_index" unique="NORMAL" >
+				<column name="email" />
+			</index>
+		</table>
+		<table name="permissions" >
+			<column name="id" type="bigint" jt="-5" mandatory="y" unsigned="y" autoincrement="y" />
+			<column name="name" type="varchar" length="255" jt="12" mandatory="y" />
+			<column name="guard_name" type="varchar" length="255" jt="12" mandatory="y" />
+			<column name="created_at" type="timestamp" jt="93" />
+			<column name="updated_at" type="timestamp" jt="93" />
+		</table>
+		<table name="phones" >
+			<column name="id" type="bigint" jt="-5" mandatory="y" autoincrement="y" />
+			<column name="type" type="varchar" length="10" jt="12" mandatory="y" />
+			<column name="number" type="varchar" length="10" jt="12" mandatory="y" />
+			<column name="extension" type="varchar" length="10" jt="12" />
+			<column name="create_at" type="datetime" jt="93" />
+			<column name="update_at" type="date" jt="91" />
+		</table>
+		<table name="role_has_permissions" >
+			<column name="permission_id" type="bigint" jt="-5" mandatory="y" unsigned="y" />
+			<column name="role_id" type="bigint" jt="-5" mandatory="y" unsigned="y" />
+			<index name="Primary" unique="PRIMARY_KEY" >
+				<column name="permission_id" />
+				<column name="role_id" />
+			</index>
+			<index name="role_has_permissions_role_id_foreign" unique="NORMAL" >
+				<column name="role_id" />
+			</index>
+		</table>
+		<table name="roles" >
+			<column name="id" type="bigint" jt="-5" mandatory="y" unsigned="y" autoincrement="y" />
+			<column name="name" type="varchar" length="255" jt="12" mandatory="y" />
+			<column name="guard_name" type="varchar" length="255" jt="12" mandatory="y" />
+			<column name="created_at" type="timestamp" jt="93" />
+			<column name="updated_at" type="timestamp" jt="93" />
+		</table>
+		<table name="users" >
+			<column name="id" type="bigint" jt="-5" mandatory="y" unsigned="y" autoincrement="y" />
+			<column name="name" type="varchar" length="255" jt="12" mandatory="y" />
+			<column name="email" type="varchar" length="255" jt="12" mandatory="y" />
+			<column name="email_verified_at" type="timestamp" jt="93" />
+			<column name="password" type="varchar" length="255" jt="12" mandatory="y" />
+			<column name="remember_token" type="varchar" length="100" jt="12" />
+			<column name="created_at" type="timestamp" jt="93" />
+			<column name="updated_at" type="timestamp" jt="93" />
+			<index name="users_email_unique" unique="NORMAL" >
+				<column name="email" />
+			</index>
+		</table>
+	</schema>
+	<layout name="Parsed Script Layout" id="Layout_189f" show_relation="columns" >
+		<entity schema="Default" name="addresses" color="BED3F4" x="1072" y="272" />
+		<entity schema="Default" name="failed_jobs" color="BED3F4" x="1280" y="272" />
+		<entity schema="Default" name="member_address" color="BED3F4" x="1280" y="592" />
+		<entity schema="Default" name="members" color="BED3F4" x="1232" y="784" />
+		<entity schema="Default" name="migrations" color="BED3F4" x="1072" y="592" />
+		<entity schema="Default" name="model_has_permissions" color="BED3F4" x="800" y="592" />
+		<entity schema="Default" name="model_has_roles" color="BED3F4" x="800" y="784" />
+		<entity schema="Default" name="oauth_access_tokens" color="BED3F4" x="816" y="304" />
+		<entity schema="Default" name="oauth_auth_codes" color="BED3F4" x="336" y="64" />
+		<entity schema="Default" name="oauth_clients" color="BED3F4" x="48" y="304" />
+		<entity schema="Default" name="oauth_personal_access_clients" color="BED3F4" x="512" y="384" />
+		<entity schema="Default" name="oauth_refresh_tokens" color="BED3F4" x="560" y="96" />
+		<entity schema="Default" name="password_resets" color="BED3F4" x="848" y="80" />
+		<entity schema="Default" name="permissions" color="BED3F4" x="1072" y="48" />
+		<entity schema="Default" name="phones" color="BED3F4" x="1488" y="272" />
+		<entity schema="Default" name="role_has_permissions" color="BED3F4" x="1488" y="96" />
+		<entity schema="Default" name="roles" color="BED3F4" x="1744" y="96" />
+		<entity schema="Default" name="users" color="BED3F4" x="1504" y="592" />
+		<callout x="1072" y="160" pointer="Round" >
+			<comment><![CDATA[Current layout is generated by parsing the SQL script.
+DbSchema is in 'offline' mode (not connected to any database).]]></comment>
+		</callout>
+		<script name="asw_roster.sql" id="Editor_64f" language="SQL" >
+			<string><![CDATA[CREATE SCHEMA `Default`;
+
+CREATE TABLE failed_jobs (
+	id                   bigint UNSIGNED NOT NULL  AUTO_INCREMENT  PRIMARY KEY,
+	uuid                 varchar(255)  NOT NULL    ,
+	connection           text  NOT NULL    ,
+	queue                text  NOT NULL    ,
+	payload              longtext  NOT NULL    ,
+	exception            longtext  NOT NULL    ,
+	failed_at            timestamp  NOT NULL DEFAULT current_timestamp()
+ );
+
+CREATE INDEX failed_jobs_uuid_unique ON failed_jobs ( uuid );
+
+CREATE TABLE member_address (
+	id                   bigint  NOT NULL  AUTO_INCREMENT  PRIMARY KEY,
+	member_id            bigint  NOT NULL    ,
+	address_id           bigint  NOT NULL    ,
+	CONSTRAINT unq_member_address_address_id UNIQUE ( address_id ) ,
+	CONSTRAINT unq_member_address_member_id UNIQUE ( member_id )
+ ) engine=InnoDB;
+
+CREATE TABLE member_roles (
+ );
+
+CREATE TABLE members (
+	id                   bigint UNSIGNED NOT NULL  AUTO_INCREMENT  PRIMARY KEY,
+	active               tinyint  NOT NULL    ,
+	user_id              int   DEFAULT 0   ,
+	prefix               varchar(20)      ,
+	first_name           varchar(50)  NOT NULL    ,
+	middle_name          varchar(50)  NOT NULL    ,
+	last_name            varchar(50)  NOT NULL    ,
+	suffix               varchar(20)      ,
+	member_since_date    date      ,
+	member_end_date      date      ,
+	date_of_birth        date      ,
+	time_of_birth        time      ,
+	created_at           timestamp      ,
+	updated_at           timestamp      ,
+	CONSTRAINT unq_members_user_id UNIQUE ( user_id )
+ );
+
+CREATE TABLE migrations (
+	id                   int UNSIGNED NOT NULL  AUTO_INCREMENT  PRIMARY KEY,
+	migration            varchar(255)  NOT NULL    ,
+	batch                int  NOT NULL
+ );
+
+CREATE TABLE model_has_permissions (
+	permission_id        bigint UNSIGNED NOT NULL    ,
+	model_type           varchar(255)  NOT NULL    ,
+	model_id             bigint UNSIGNED NOT NULL    ,
+	CONSTRAINT `Primary` PRIMARY KEY ( permission_id, model_id, model_type )
+ );
+
+CREATE INDEX model_has_permissions_model_id_model_type_index ON model_has_permissions ( model_id, model_type );
+
+CREATE TABLE model_has_roles (
+	role_id              bigint UNSIGNED NOT NULL    ,
+	model_type           varchar(255)  NOT NULL    ,
+	model_id             bigint UNSIGNED NOT NULL    ,
+	CONSTRAINT `Primary` PRIMARY KEY ( role_id, model_id, model_type )
+ );
+
+CREATE INDEX model_has_roles_model_id_model_type_index ON model_has_roles ( model_id, model_type );
+
+CREATE TABLE oauth_access_tokens (
+	id                   varchar(100)  NOT NULL    PRIMARY KEY,
+	user_id              bigint UNSIGNED     ,
+	client_id            bigint UNSIGNED NOT NULL    ,
+	name                 varchar(255)      ,
+	scopes               text      ,
+	revoked              tinyint  NOT NULL    ,
+	created_at           timestamp      ,
+	updated_at           timestamp      ,
+	expires_at           datetime
+ );
+
+CREATE INDEX oauth_access_tokens_user_id_index ON oauth_access_tokens ( user_id );
+
+CREATE TABLE oauth_auth_codes (
+	id                   varchar(100)  NOT NULL    PRIMARY KEY,
+	user_id              bigint UNSIGNED NOT NULL    ,
+	client_id            bigint UNSIGNED NOT NULL    ,
+	scopes               text      ,
+	revoked              tinyint  NOT NULL    ,
+	expires_at           datetime
+ );
+
+CREATE INDEX oauth_auth_codes_user_id_index ON oauth_auth_codes ( user_id );
+
+CREATE TABLE oauth_clients (
+	id                   bigint UNSIGNED NOT NULL  AUTO_INCREMENT  PRIMARY KEY,
+	user_id              bigint UNSIGNED     ,
+	name                 varchar(255)  NOT NULL    ,
+	secret               varchar(100)      ,
+	provider             varchar(255)      ,
+	redirect             text  NOT NULL    ,
+	personal_access_client tinyint  NOT NULL    ,
+	password_client      tinyint  NOT NULL    ,
+	revoked              tinyint  NOT NULL    ,
+	created_at           timestamp      ,
+	updated_at           timestamp
+ );
+
+CREATE INDEX oauth_clients_user_id_index ON oauth_clients ( user_id );
+
+CREATE TABLE oauth_personal_access_clients (
+	id                   bigint UNSIGNED NOT NULL  AUTO_INCREMENT  PRIMARY KEY,
+	client_id            bigint UNSIGNED NOT NULL    ,
+	created_at           timestamp      ,
+	updated_at           timestamp
+ );
+
+CREATE TABLE oauth_refresh_tokens (
+	id                   varchar(100)  NOT NULL    PRIMARY KEY,
+	access_token_id      varchar(100)  NOT NULL    ,
+	revoked              tinyint  NOT NULL    ,
+	expires_at           datetime
+ );
+
+CREATE INDEX oauth_refresh_tokens_access_token_id_index ON oauth_refresh_tokens ( access_token_id );
+
+CREATE TABLE password_resets (
+	email                varchar(255)  NOT NULL    ,
+	token                varchar(255)  NOT NULL    ,
+	created_at           timestamp
+ );
+
+CREATE INDEX password_resets_email_index ON password_resets ( email );
+
+CREATE TABLE permissions (
+	id                   bigint UNSIGNED NOT NULL  AUTO_INCREMENT  PRIMARY KEY,
+	name                 varchar(255)  NOT NULL    ,
+	guard_name           varchar(255)  NOT NULL    ,
+	created_at           timestamp      ,
+	updated_at           timestamp
+ );
+
+CREATE TABLE phones (
+	id                   bigint  NOT NULL  AUTO_INCREMENT  PRIMARY KEY,
+	`type`               varchar(10)  NOT NULL    ,
+	number               varchar(10)  NOT NULL    ,
+	extension            varchar(10)      ,
+	create_at            datetime      ,
+	update_at            date
+ ) engine=InnoDB;
+
+CREATE TABLE roles (
+	id                   bigint UNSIGNED NOT NULL  AUTO_INCREMENT  PRIMARY KEY,
+	name                 varchar(255)  NOT NULL    ,
+	guard_name           varchar(255)  NOT NULL    ,
+	created_at           timestamp      ,
+	updated_at           timestamp
+ );
+
+CREATE TABLE users (
+	id                   bigint UNSIGNED NOT NULL  AUTO_INCREMENT  PRIMARY KEY,
+	name                 varchar(255)  NOT NULL    ,
+	email                varchar(255)  NOT NULL    ,
+	email_verified_at    timestamp      ,
+	password             varchar(255)  NOT NULL    ,
+	remember_token       varchar(100)      ,
+	created_at           timestamp      ,
+	updated_at           timestamp
+ );
+
+CREATE INDEX users_email_unique ON users ( email );
+
+CREATE TABLE addresses (
+	id                   bigint  NOT NULL  AUTO_INCREMENT  PRIMARY KEY,
+	description          varchar(50)      ,
+	adddress_1           varchar(100)  NOT NULL    ,
+	adddress_2           varchar(100)      ,
+	adddress_3           varchar(100)      ,
+	city                 varchar(100)  NOT NULL    ,
+	state                varchar(2)  NOT NULL    ,
+	country              char(2)   DEFAULT 'US'   ,
+	zip                  char(20)  NOT NULL    ,
+	created_at           datetime      ,
+	updated_at           datetime
+ ) engine=InnoDB;
+
+CREATE TABLE role_has_permissions (
+	permission_id        bigint UNSIGNED NOT NULL    ,
+	role_id              bigint UNSIGNED NOT NULL    ,
+	CONSTRAINT `Primary` PRIMARY KEY ( permission_id, role_id )
+ );
+
+CREATE INDEX role_has_permissions_role_id_foreign ON role_has_permissions ( role_id );
+
+ALTER TABLE addresses ADD CONSTRAINT fk_addresses_member_address FOREIGN KEY ( id ) REFERENCES member_address( address_id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE members ADD CONSTRAINT fk_members_member_address FOREIGN KEY ( id ) REFERENCES member_address( member_id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE role_has_permissions ADD CONSTRAINT role_has_permissions_permission_id_foreign FOREIGN KEY ( permission_id ) REFERENCES permissions( id ) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+ALTER TABLE role_has_permissions ADD CONSTRAINT role_has_permissions_role_id_foreign FOREIGN KEY ( role_id ) REFERENCES roles( id ) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+ALTER TABLE users ADD CONSTRAINT fk_users_members FOREIGN KEY ( id ) REFERENCES members( user_id ) ON DELETE NO ACTION ON UPDATE NO ACTION;]]></string>
+		</script>
+	</layout>
+</project>
