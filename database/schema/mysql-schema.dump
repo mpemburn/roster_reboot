@@ -30,6 +30,20 @@ CREATE TABLE `addresses` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bondeds` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `coven_id` bigint(20) unsigned NOT NULL,
+  `bonded_date` date NOT NULL,
+  `member_id` bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_bondeds_covens` (`coven_id`),
+  KEY `fk_bondeds_members` (`member_id`),
+  CONSTRAINT `fk_bondeds_covens` FOREIGN KEY (`coven_id`) REFERENCES `covens` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_bondeds_members` FOREIGN KEY (`member_id`) REFERENCES `members` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `covens` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -73,6 +87,31 @@ CREATE TABLE `failed_jobs` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `leaders` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `member_id` bigint(20) unsigned NOT NULL,
+  `role_name` varchar(20) NOT NULL,
+  `leadership_date` date DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unq_leaders_role_name` (`role_name`),
+  KEY `fk_leaders_members` (`member_id`),
+  CONSTRAINT `fk_leaders_leadership_roles` FOREIGN KEY (`role_name`) REFERENCES `leadership_roles` (`role_name`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `leadership_roles` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `role_name` varchar(30) DEFAULT NULL,
+  `abbreviation` varchar(20) NOT NULL,
+  `group_name` varchar(20) NOT NULL,
+  `level` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `fk_leadership_roles_leaders` (`role_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -135,6 +174,19 @@ CREATE TABLE `members_degrees` (
   KEY `fk_members_degrees_degrees` (`degree_id`),
   CONSTRAINT `fk_members_degrees_degrees` FOREIGN KEY (`degree_id`) REFERENCES `degrees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_members_degrees_members` FOREIGN KEY (`member_id`) REFERENCES `members` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `members_leaders` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `member_id` bigint(20) unsigned NOT NULL,
+  `leader_id` bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_members_leaders_members` (`member_id`),
+  KEY `fk_members_leaders_leaders` (`leader_id`),
+  CONSTRAINT `fk_members_leaders_leaders` FOREIGN KEY (`leader_id`) REFERENCES `leaders` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_members_leaders_members` FOREIGN KEY (`member_id`) REFERENCES `members` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -364,6 +416,7 @@ INSERT INTO `migrations` VALUES (9,'2016_06_01_000004_create_oauth_clients_table
 INSERT INTO `migrations` VALUES (10,'2016_06_01_000005_create_oauth_personal_access_clients_table',2);
 INSERT INTO `migrations` VALUES (11,'2020_10_07_152100_CreateMembersTable',3);
 INSERT INTO `migrations` VALUES (12,'2020_10_07_152100_create_members_table',4);
-INSERT INTO `migrations` VALUES (20,'2020_11_09_114222_seed_states_table',5);
 INSERT INTO `migrations` VALUES (21,'2020_11_09_135253_seed_elements_table',6);
 INSERT INTO `migrations` VALUES (22,'2020_11_09_135437_seed_wheels_table',7);
+INSERT INTO `migrations` VALUES (23,'2020_11_09_114222_seed_states_table',8);
+INSERT INTO `migrations` VALUES (25,'2020_11_10_175420_seed_leadership_role_table',9);

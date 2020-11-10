@@ -1,11 +1,12 @@
 <?php
 
-use App\Models\Wheel;
+use App\Models\LeadershipRole;
 use App\Traits\ImportSeederCsv;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class SeedWheelsTable extends Migration
+class SeedLeadershipRoleTable extends Migration
 {
     use ImportSeederCsv;
     /**
@@ -15,10 +16,10 @@ class SeedWheelsTable extends Migration
      */
     public function up(): void
     {
-        if (Schema::hasTable('wheels')) {
-            $data = $this->getCsv('./database/data/wheels.csv');
+        if (Schema::hasTable('leadership_roles')) {
+            $data = $this->getCsv('./database/data/leadership_roles.csv');
             $data->each(static function ($row) {
-                Wheel::create($row->toArray());
+                LeadershipRole::create($row->toArray());
             });
         }
     }
@@ -30,9 +31,9 @@ class SeedWheelsTable extends Migration
      */
     public function down(): void
     {
-        if (Schema::hasTable('wheels')) {
+        if (Schema::hasTable('leadership_roles')) {
             DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-            Wheel::truncate();
+            LeadershipRole::truncate();
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         }
     }
