@@ -76,6 +76,19 @@ CREATE TABLE `elements` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `emails` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `member_id` bigint(20) unsigned DEFAULT NULL,
+  `is_primary` tinyint(4) DEFAULT 1,
+  `email` varchar(255) DEFAULT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_emails_members` (`member_id`),
+  CONSTRAINT `fk_emails_members` FOREIGN KEY (`member_id`) REFERENCES `members` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -124,6 +137,7 @@ CREATE TABLE `members` (
   `middle_name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `suffix` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `magickal_name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `member_since_date` date DEFAULT NULL,
   `member_end_date` date DEFAULT NULL,
   `date_of_birth` date DEFAULT NULL,
@@ -366,6 +380,14 @@ CREATE TABLE `roles` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `security_questions` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `question` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `states` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `abbreviation` varchar(2) NOT NULL,
@@ -390,6 +412,19 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users_security_questions` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `question_id` bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_users_security_questions_security_questions` (`question_id`),
+  KEY `fk_users_security_questions_users` (`user_id`),
+  CONSTRAINT `fk_users_security_questions_security_questions` FOREIGN KEY (`question_id`) REFERENCES `security_questions` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_users_security_questions_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
