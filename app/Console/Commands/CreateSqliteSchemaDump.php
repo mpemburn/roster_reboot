@@ -39,7 +39,7 @@ class CreateSqliteSchemaDump extends Command
      */
     public function handle()
     {
-        $database = env('DB_DATABASE');
+        $database = env('DB_DATABASE_DEFAULT');
         $excludedTables = collect([
             'failed_jobs',
             'oauth_auth_codes',
