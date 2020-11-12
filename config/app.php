@@ -163,7 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         // Third Party
         Spatie\Permission\PermissionServiceProvider::class,
-
+        Nwidart\Menus\MenusServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -213,6 +213,7 @@ return [
         'Lang' => Illuminate\Support\Facades\Lang::class,
         'Log' => Illuminate\Support\Facades\Log::class,
         'Mail' => Illuminate\Support\Facades\Mail::class,
+        'Menu' => Nwidart\Menus\Facades\Menu::class,
         'Notification' => Illuminate\Support\Facades\Notification::class,
         'Password' => Illuminate\Support\Facades\Password::class,
         'Queue' => Illuminate\Support\Facades\Queue::class,
