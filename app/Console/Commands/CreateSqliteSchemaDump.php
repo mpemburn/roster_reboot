@@ -64,7 +64,7 @@ class CreateSqliteSchemaDump extends Command
         $output = $process->getOutput();
 
         $output = $this->massageOutput($output);
-        !d($output);
+
         Storage::disk('schema')->put('sqlite_testing-schema.dump', $output);
 
         return 0;
