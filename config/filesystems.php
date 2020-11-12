@@ -65,6 +65,11 @@ return [
             'endpoint' => env('AWS_ENDPOINT'),
         ],
 
+        'schema' => [
+            'driver' => 'local',
+            'root' => base_path() . '/database/schema'
+        ],
+
     ],
 
     /*

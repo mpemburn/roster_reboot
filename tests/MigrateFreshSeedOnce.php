@@ -19,6 +19,7 @@ trait MigrateFreshSeedOnce
     {
 //        parent::setUp();
         if (!static::$setUpHasRunOnce) {
+            Artisan::call('schema:dump_sqlite');
             Artisan::call('migrate:fresh');
             Artisan::call(
                 'db:seed', ['--class' => 'DatabaseSeeder']
