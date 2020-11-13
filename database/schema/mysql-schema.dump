@@ -132,11 +132,11 @@ CREATE TABLE `members` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `active` tinyint(4) NOT NULL,
   `user_id` int(11) DEFAULT 0,
-  `prefix` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `prefix_id` bigint(20) unsigned DEFAULT NULL,
   `first_name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `middle_name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `suffix` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `suffix_id` bigint(20) unsigned DEFAULT NULL,
   `magickal_name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `member_since_date` date DEFAULT NULL,
   `member_end_date` date DEFAULT NULL,
@@ -145,7 +145,11 @@ CREATE TABLE `members` (
   `place_of_birth` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unq_members_prefix` (`prefix_id`),
+  KEY `fk_members_sufixes` (`suffix_id`),
+  CONSTRAINT `fk_members_prefixes` FOREIGN KEY (`prefix_id`) REFERENCES `prefixes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_members_sufixes` FOREIGN KEY (`suffix_id`) REFERENCES `suffixes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -358,6 +362,15 @@ CREATE TABLE `permissions` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `prefixes` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `prefix` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unq_prefixes_prefix` (`prefix`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `role_has_permissions` (
   `permission_id` bigint(20) unsigned NOT NULL,
   `role_id` bigint(20) unsigned NOT NULL,
@@ -396,6 +409,14 @@ CREATE TABLE `states` (
   `is_local` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unq_states_abbreviation` (`abbreviation`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `suffixes` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `suffix` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -455,3 +476,6 @@ INSERT INTO `migrations` VALUES (21,'2020_11_09_135253_seed_elements_table',6);
 INSERT INTO `migrations` VALUES (22,'2020_11_09_135437_seed_wheels_table',7);
 INSERT INTO `migrations` VALUES (23,'2020_11_09_114222_seed_states_table',8);
 INSERT INTO `migrations` VALUES (25,'2020_11_10_175420_seed_leadership_role_table',9);
+INSERT INTO `migrations` VALUES (28,'2016_06_01_000001_create_oauth_auth_codes_table',1);
+INSERT INTO `migrations` VALUES (29,'2020_11_12_181618_seed_security_question_table',10);
+INSERT INTO `migrations` VALUES (30,'2020_11_13_193828_seed_prefixes_table',11);
