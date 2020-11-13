@@ -17,6 +17,7 @@ use Illuminate\Notifications\Notifiable;
  * @property $middle_name;
  * @property $last_name;
  * @property $suffix;
+ * @property $magickal_name;
  * @property $member_since_date;
  * @property $member_end_date;
  * @property $date_of_birth;
@@ -35,6 +36,7 @@ class Member extends Model
         'middle_name',
         'last_name',
         'suffix',
+        'magickal_name',
         'member_since_date',
         'member_end_date',
         'date_of_birth',
