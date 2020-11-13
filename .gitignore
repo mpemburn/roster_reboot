@@ -22,3 +22,4 @@ workspace.xml
 /ansible/hosts/staging
 /ansible/hosts/production
 /:memory
+:memory
