@@ -4,6 +4,7 @@ namespace Tests\Unit\Models;
 
 use App\Models\Element;
 use App\Models\LeadershipRole;
+use App\Models\Prefix;
 use App\Models\SecurityQuestion;
 use App\Models\State;
 use App\Models\Wheel;
@@ -16,28 +17,12 @@ class SeededModelsTest extends TestCase
 {
     use ImportSeederCsv;
 
-    public function testStatesModel(): void
-    {
-        $state = new State();
-        $seed = $this->getRandomSeedValue($state);
-
-        $this->doAssertions($seed, $state);
-    }
-
     public function testElementsModel(): void
     {
         $element = new Element();
         $seed = $this->getRandomSeedValue($element);
 
         $this->doAssertions($seed, $element);
-    }
-
-    public function testWheelsModel(): void
-    {
-        $wheel = new Wheel();
-        $seed = $this->getRandomSeedValue($wheel);
-
-        $this->doAssertions($seed, $wheel);
     }
 
     public function testLeadershipRoleModel(): void
@@ -48,12 +33,36 @@ class SeededModelsTest extends TestCase
         $this->doAssertions($seed, $role);
     }
 
+//    public function testPrefixesModel(): void
+//    {
+//        $prefix = new Prefix();
+//        $seed = $this->getRandomSeedValue($prefix);
+//
+//        $this->doAssertions($seed, $prefix);
+//    }
+
     public function testSecurityQuestionModel(): void
     {
         $question = new SecurityQuestion();
         $seed = $this->getRandomSeedValue($question);
 
         $this->doAssertions($seed, $question);
+    }
+
+    public function testStatesModel(): void
+    {
+        $state = new State();
+        $seed = $this->getRandomSeedValue($state);
+
+        $this->doAssertions($seed, $state);
+    }
+
+    public function testWheelsModel(): void
+    {
+        $wheel = new Wheel();
+        $seed = $this->getRandomSeedValue($wheel);
+
+        $this->doAssertions($seed, $wheel);
     }
 
     protected function getRandomSeedValue(Model $model): ?Collection
@@ -65,12 +74,13 @@ class SeededModelsTest extends TestCase
 
     protected function doAssertions(Collection $seed, Model $model): void
     {
-        $seed->each(static function ($value, $key) use ($model) {
-            $result = $model->query()->where($key, '=', $value);
+        $seed->each(static function ($value, $property) use ($model) {
+            $result = $model->query()->where($property, '=', $value);
             $instance = $result->first();
 
             if ($instance) {
-                self::assertEquals($value, $instance->$key);
+                // ->$key references the Model's property
+                self::assertEquals($value, $instance->$property);
             }
         });
     }
