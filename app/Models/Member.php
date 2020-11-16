@@ -12,11 +12,11 @@ use Illuminate\Notifications\Notifiable;
  *
  * @property $active;
  * @property $user_id;
- * @property $prefix;
+ * @property $prefix_id;
  * @property $first_name;
  * @property $middle_name;
  * @property $last_name;
- * @property $suffix;
+ * @property $suffix_id;
  * @property $magickal_name;
  * @property $member_since_date;
  * @property $member_end_date;
@@ -31,11 +31,11 @@ class Member extends Model
     protected $fillable = [
         'active',
         'user_id',
-        'prefix',
+        'prefix_id',
         'first_name',
         'middle_name',
         'last_name',
-        'suffix',
+        'suffix_id',
         'magickal_name',
         'member_since_date',
         'member_end_date',
