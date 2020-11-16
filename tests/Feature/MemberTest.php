@@ -13,8 +13,8 @@ class MemberTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        // Migrate the database
-        $this->migrate();
+        // Do artisan migrate:refresh on test database
+        $this->refreshDatabase();
         $this->setAttributes();
     }
 
