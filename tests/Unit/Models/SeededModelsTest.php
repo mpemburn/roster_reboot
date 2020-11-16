@@ -9,7 +9,6 @@ use App\Models\SecurityQuestion;
 use App\Models\State;
 use App\Models\Wheel;
 use App\Traits\ImportSeederCsv;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Tests\TestCase;
 
