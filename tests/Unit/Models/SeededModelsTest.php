@@ -17,69 +17,93 @@ class SeededModelsTest extends TestCase
 {
     use ImportSeederCsv;
 
+    public function setUp(): void
+    {
+        parent::setUp();
+        // Do artisan migrate:refresh on test database
+        $this->refreshDatabase();
+    }
+
     public function testElementsModel(): void
     {
-        $element = new Element();
-        $seed = $this->getRandomSeedValue($element);
+        $seeds = $this->seedTable(Element::class);
+        $seed = $this->getRandomSeedValue($seeds);
 
-        $this->doAssertions($seed, $element);
+        $this->doAssertions($seed, Element::class);
     }
 
     public function testLeadershipRoleModel(): void
     {
-        $role = new LeadershipRole();
-        $seed = $this->getRandomSeedValue($role);
+        $seeds = $this->seedTable(LeadershipRole::class);
+        $seed = $this->getRandomSeedValue($seeds);
 
-        $this->doAssertions($seed, $role);
+        $this->doAssertions($seed, LeadershipRole::class);
     }
 
-//    public function testPrefixesModel(): void
-//    {
-//        $prefix = new Prefix();
-//        $seed = $this->getRandomSeedValue($prefix);
-//
-//        $this->doAssertions($seed, $prefix);
-//    }
+    public function testPrefixesModel(): void
+    {
+        $seeds = $this->seedTable(Prefix::class);
+        $seed = $this->getRandomSeedValue($seeds);
+
+        $this->doAssertions($seed, Prefix::class);
+    }
 
     public function testSecurityQuestionModel(): void
     {
-        $question = new SecurityQuestion();
-        $seed = $this->getRandomSeedValue($question);
+        $seeds = $this->seedTable(SecurityQuestion::class);
+        $seed = $this->getRandomSeedValue($seeds);
 
-        $this->doAssertions($seed, $question);
+        $this->doAssertions($seed, SecurityQuestion::class);
     }
 
     public function testStatesModel(): void
     {
-        $state = new State();
-        $seed = $this->getRandomSeedValue($state);
+        $seeds = $this->seedTable(State::class);
+        $seed = $this->getRandomSeedValue($seeds);
 
-        $this->doAssertions($seed, $state);
+        $this->doAssertions($seed, State::class);
     }
 
     public function testWheelsModel(): void
     {
-        $wheel = new Wheel();
-        $seed = $this->getRandomSeedValue($wheel);
+        $seeds = $this->seedTable(Wheel::class);
+        $seed = $this->getRandomSeedValue($seeds);
 
-        $this->doAssertions($seed, $wheel);
+        $this->doAssertions($seed, Wheel::class);
     }
 
-    protected function getRandomSeedValue(Model $model): ?Collection
+    protected function seedTable(string $className): Collection
     {
-        $seeds = $this->getCsv(base_path() . "/database/data/{$model->getTable()}.csv");
+        $model = new $className();
+        $table = $model->getTable();
 
+        // Get a collection of the lines from the CSV for this table
+        $seeds = $this->getCsv(base_path() . "/database/data/{$table}.csv");
+        $seeds->each(static function ($seed) use ($className) {
+            $model = new $className($seed->toArray());
+            $model->save();
+        });
+
+        $all = $model->all();
+        self::assertEquals($seeds->count(), $all->count());
+
+        return $seeds;
+    }
+
+    protected function getRandomSeedValue(Collection $seeds): ?Collection
+    {
         return $seeds->isNotEmpty() ? $seeds->random() : null;
     }
 
-    protected function doAssertions(Collection $seed, Model $model): void
+    protected function doAssertions(Collection $seed, string $className): void
     {
+        $model = new $className();
         $seed->each(static function ($value, $property) use ($model) {
             $result = $model->query()->where($property, '=', $value);
             $instance = $result->first();
 
             if ($instance) {
-                // ->$key references the Model's property
+                // ->$property references the Model's property
                 self::assertEquals($value, $instance->$property);
             }
         });
