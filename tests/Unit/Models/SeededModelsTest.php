@@ -7,6 +7,7 @@ use App\Models\LeadershipRole;
 use App\Models\Prefix;
 use App\Models\SecurityQuestion;
 use App\Models\State;
+use App\Models\Suffix;
 use App\Models\Wheel;
 use App\Traits\ImportSeederCsv;
 use Illuminate\Support\Collection;
@@ -61,6 +62,14 @@ class SeededModelsTest extends TestCase
         $seed = $this->getRandomSeedValue($seeds);
 
         $this->doAssertions($seed, State::class);
+    }
+
+    public function testSuffixModel(): void
+    {
+        $seeds = $this->seedTable(Suffix::class);
+        $seed = $this->getRandomSeedValue($seeds);
+
+        $this->doAssertions($seed, Suffix::class);
     }
 
     public function testWheelsModel(): void
