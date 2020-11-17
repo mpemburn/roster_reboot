@@ -26,4 +26,19 @@ class CovenTest extends TestCase
 
         $this->assertDatabaseHas((new Coven())->getTable(), $attributes);
     }
+
+    public function testCanRetrieveCovens(): void
+    {
+        $this->withoutExceptionHandling();
+
+        $response = $this->json('GET', '/api/covens');
+        $response->assertStatus(200);
+        $response->assertJsonStructure([
+            'data' => [
+                '*' => array_keys((new Coven())->toArray())
+            ]
+        ]);
+    }
+
+
 }
