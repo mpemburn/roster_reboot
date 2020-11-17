@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Member;
+use App\Models\Prefix;
+use App\Models\Suffix;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -28,6 +30,12 @@ class MemberFactory extends Factory
             'first_name' => $this->faker->firstName,
             'middle_name' =>  $this->faker->firstName,
             'last_name' =>  $this->faker->lastName,
+            'magickal_name' => $this->faker->firstName,
+            'member_since_date' => $this->faker->date(),
+            'member_end_date' => $this->faker->date(),
+            'date_of_birth' => $this->faker->date(),
+            'time_of_birth' => $this->faker->date('H:i'),
+            'place_of_birth' => $this->faker->locale,
         ];
     }
 }

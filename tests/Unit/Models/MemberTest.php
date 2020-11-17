@@ -4,6 +4,10 @@
 namespace Tests\Unit\Models;
 
 use App\Models\Member;
+use App\Models\User;
+use Database\Seeders\DatabaseSeeder;
+use Database\Seeders\MemberSeeder;
+use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
 class MemberTest extends TestCase
@@ -18,6 +22,8 @@ class MemberTest extends TestCase
             'first_name' => 'Jorge',
             'last_name' => 'Jones',
         ]);
+
+        (new DatabaseSeeder())->call(MemberSeeder::class);
     }
 
     public function testMemberHasFirstName(): void
@@ -29,4 +35,10 @@ class MemberTest extends TestCase
     {
         self::assertEquals('Jones', $this->member->last_name);
     }
+
+    public function testHasFiftyUsers()
+    {
+        self::assertEquals(50, Member::count());
+    }
+
 }

@@ -3,6 +3,8 @@
 namespace Tests\Feature;
 
 use App\Models\Member;
+use Database\Seeders\DatabaseSeeder;
+use Database\Seeders\MemberSeeder;
 use Tests\TestCase;
 use Faker\Factory;
 
@@ -16,6 +18,7 @@ class MemberTest extends TestCase
         // Do artisan migrate:refresh on test database
         $this->refreshDatabase();
         $this->setAttributes();
+        (new DatabaseSeeder())->call(MemberSeeder::class);
     }
 
     public function testUserCanCreateMember(): void
@@ -32,7 +35,7 @@ class MemberTest extends TestCase
         $this->withoutExceptionHandling();
 
         $response = $this->json('GET', '/api/members');
-
+//        !d($response->getContent());
         $response->assertStatus(200);
         $response->assertJsonStructure([
             'data' => [

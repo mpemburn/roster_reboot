@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Member;
+use App\Models\Prefix;
 use Illuminate\Database\Seeder;
 
 class MemberSeeder extends Seeder
