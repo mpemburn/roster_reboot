@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Notifications\Notifiable;
 
 /**
@@ -44,4 +45,13 @@ class Member extends Model
         'place_of_birth',
     ];
 
+    public function prefix(): HasOne
+    {
+        return $this->hasOne(Prefix::class);
+    }
+
+    public function suffix(): HasOne
+    {
+        return $this->hasOne(Suffix::class);
+    }
 }

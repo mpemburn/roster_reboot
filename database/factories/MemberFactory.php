@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Member;
 use App\Models\Prefix;
 use App\Models\Suffix;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -25,11 +26,13 @@ class MemberFactory extends Factory
     public function definition(): array
     {
         return [
-            'active' => random_int(0,1),
-            'user_id' => random_int(1, 9999),
+            'active' => $this->faker->numberBetween(0, 1),
+            'user_id' => User::factory(),
+            'prefix_id' => Prefix::factory(),
             'first_name' => $this->faker->firstName,
             'middle_name' =>  $this->faker->firstName,
             'last_name' =>  $this->faker->lastName,
+            'suffix_id' => Suffix::factory(),
             'magickal_name' => $this->faker->firstName,
             'member_since_date' => $this->faker->date(),
             'member_end_date' => $this->faker->date(),

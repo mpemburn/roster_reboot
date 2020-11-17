@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Prefix;
+use App\Models\Suffix;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PrefixFactory extends Factory
+class SuffixFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Prefix::class;
+    protected $model = Suffix::class;
 
     /**
      * Define the model's default state.
@@ -23,7 +23,7 @@ class PrefixFactory extends Factory
     {
         return [
             'id' => $this->faker->unique()->numberBetween(0, 9999),
-            'prefix' => $this->faker->unique()->word
+            'suffix' => $this->faker->unique()->word
         ];
     }
 }

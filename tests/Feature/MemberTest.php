@@ -35,7 +35,6 @@ class MemberTest extends TestCase
         $this->withoutExceptionHandling();
 
         $response = $this->json('GET', '/api/members');
-//        !d($response->getContent());
         $response->assertStatus(200);
         $response->assertJsonStructure([
             'data' => [
