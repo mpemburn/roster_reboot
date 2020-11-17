@@ -36,9 +36,9 @@ class MemberTest extends TestCase
         self::assertEquals('Jones', $this->member->last_name);
     }
 
-    public function testHasFiftyUsers()
+    public function testHasFiftyUsers(): void
     {
-        self::assertEquals(50, Member::count());
+        self::assertEquals(50, Member::query()->count());
     }
 
 }
