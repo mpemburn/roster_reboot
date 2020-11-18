@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use App\Models\Coven;
-use Database\Factories\CovenFactory;
 use Database\Seeders\DatabaseSeeder;
 use Database\Seeders\MemberSeeder;
 use Tests\TestCase;
@@ -39,6 +38,4 @@ class CovenTest extends TestCase
             ]
         ]);
     }
-
-
 }
