@@ -77,14 +77,12 @@ CREATE TABLE `elements` (
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `emails` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `member_id` bigint(20) unsigned DEFAULT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `is_primary` tinyint(4) DEFAULT 1,
   `email` varchar(255) DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_emails_members` (`member_id`),
-  CONSTRAINT `fk_emails_members` FOREIGN KEY (`member_id`) REFERENCES `members` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  `member_id` bigint(20) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -479,3 +477,4 @@ INSERT INTO `migrations` VALUES (25,'2020_11_10_175420_seed_leadership_role_tabl
 INSERT INTO `migrations` VALUES (28,'2016_06_01_000001_create_oauth_auth_codes_table',1);
 INSERT INTO `migrations` VALUES (29,'2020_11_12_181618_seed_security_question_table',10);
 INSERT INTO `migrations` VALUES (30,'2020_11_13_193828_seed_prefixes_table',11);
+INSERT INTO `migrations` VALUES (32,'2020_11_17_162752_create_posts_table',12);
