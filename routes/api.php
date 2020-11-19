@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::group(['middleware' => 'api'], function () {
+    Route::post('/member', MembersController::class . '@store');
     Route::get('/members', MembersController::class . '@show');
     Route::get('/covens', CovenController::class . '@show');
 });

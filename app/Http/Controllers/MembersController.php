@@ -10,7 +10,7 @@ class MembersController extends Controller
 {
     public function store(Request $request)
     {
-        return Member::create($request->all());
+        return Member::query()->create($request->all());
     }
 
     public function show(): string
