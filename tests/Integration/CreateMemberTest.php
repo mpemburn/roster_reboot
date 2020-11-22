@@ -2,7 +2,7 @@
 
 namespace Tests\Integration;
 
-use App\Models\Email;
+use App\Models\Coven;
 use App\Models\Member;
 use Database\Seeders\DatabaseSeeder;
 use Database\Seeders\MemberSeeder;
@@ -35,5 +35,19 @@ class CreateMemberTest extends TestCase
         $response->assertStatus(201);
 
         $this->assertDatabaseHas('members', $member->toArray());
+    }
+
+    public function testMemberCanBeAddedToCoven(): void
+    {
+        $this->withoutExceptionHandling();
+
+        $member = Member::factory()->create();
+        $coven = Coven::factory()->create();
+
+        $response = $this->post('/api/member_coven', ['member_id' => $member->id, 'coven_id' => $coven->id]);
+
+        $response->assertStatus(200);
+
+        $this->assertDatabaseHas('members', ['coven_id' => $coven->id]);
     }
 }
