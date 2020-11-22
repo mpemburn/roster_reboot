@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Notifications\Notifiable;
@@ -25,6 +26,7 @@ use Illuminate\Notifications\Notifiable;
  * @property $date_of_birth;
  * @property $time_of_birth;
  * @property $place_of_birth;
+ * @property $coven_id;
  */
 class Member extends Model
 {
@@ -44,6 +46,7 @@ class Member extends Model
         'date_of_birth',
         'time_of_birth',
         'place_of_birth',
+        'coven_id',
     ];
 
     public function prefix(): HasOne
@@ -59,5 +62,10 @@ class Member extends Model
     public function emails(): HasMany
     {
         return $this->hasMany(Email::class);
+    }
+
+    public function coven(): BelongsTo
+    {
+        return $this->belongsTo(Coven::class);
     }
 }
