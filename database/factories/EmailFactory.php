@@ -22,7 +22,9 @@ class EmailFactory extends Factory
     public function definition()
     {
         return [
-            'email' => $this->faker->email
+            'email' => $this->faker->email,
+            'description' => $this->faker->sentence,
+            'is_primary' => $this->faker->boolean
         ];
     }
 }
