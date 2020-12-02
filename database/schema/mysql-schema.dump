@@ -82,7 +82,9 @@ CREATE TABLE `emails` (
   `email` varchar(255) DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL,
   `member_id` bigint(20) unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_emails_members` (`member_id`),
+  CONSTRAINT `fk_emails_members` FOREIGN KEY (`member_id`) REFERENCES `members` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -129,7 +131,7 @@ CREATE TABLE `leadership_roles` (
 CREATE TABLE `members` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `active` tinyint(4) NOT NULL,
-  `user_id` int(11) DEFAULT 0,
+  `user_id` bigint(20) unsigned DEFAULT 0,
   `prefix_id` bigint(20) unsigned DEFAULT NULL,
   `first_name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `middle_name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -148,6 +150,7 @@ CREATE TABLE `members` (
   KEY `fk_members_sufixes` (`suffix_id`),
   KEY `fk_members_prefixes` (`prefix_id`),
   KEY `fk_members_covens` (`coven_id`),
+  KEY `fk_members_users` (`user_id`),
   CONSTRAINT `fk_members_covens` FOREIGN KEY (`coven_id`) REFERENCES `covens` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_members_prefixes` FOREIGN KEY (`prefix_id`) REFERENCES `prefixes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_members_sufixes` FOREIGN KEY (`suffix_id`) REFERENCES `suffixes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -206,19 +209,6 @@ CREATE TABLE `members_notes` (
   KEY `fk_members_notes_notes` (`note_id`),
   CONSTRAINT `fk_members_notes_members` FOREIGN KEY (`member_id`) REFERENCES `members` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_members_notes_notes` FOREIGN KEY (`note_id`) REFERENCES `notes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `members_users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `member_id` bigint(20) unsigned DEFAULT NULL,
-  `user_id` bigint(20) unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `unq_members_users_member_id` (`member_id`),
-  UNIQUE KEY `unq_members_users_user_id` (`user_id`),
-  CONSTRAINT `fk_members_users_members` FOREIGN KEY (`member_id`) REFERENCES `members` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_members_users_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
