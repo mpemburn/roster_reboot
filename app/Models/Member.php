@@ -49,6 +49,11 @@ class Member extends Model
         'coven_id',
     ];
 
+    public function user(): HasOne
+    {
+        return $this->hasOne(User::class);
+    }
+
     public function prefix(): HasOne
     {
         return $this->hasOne(Prefix::class);
