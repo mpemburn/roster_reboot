@@ -25,6 +25,7 @@ Route::group(['middleware' => 'api'], function () {
     Route::post('/member', MembersController::class . '@store');
     Route::post('/member_email', MembersController::class . '@addEmailToMember');
     Route::post('/member_coven', MembersController::class . '@addMemberToCoven');
+    Route::put('member_update/{member_id}', [MembersController::class, 'updateMember']);
 
     Route::get('/members', MembersController::class . '@show');
 

@@ -26,6 +26,13 @@ class MembersController extends Controller
         ])->toJson();
     }
 
+    public function updateMember(Request $request, $id): void
+    {
+        $member = Member::query()->find($id);
+
+        $member->update($request->all());
+    }
+
     public function addEmailToMember(Request $request): void
     {
         $member = Member::query()->find($request->get('member_id'));

@@ -43,6 +43,20 @@ class MemberTest extends TestCase
         ]);
     }
 
+    public function testCanUpdateMember(): void
+    {
+        $this->withoutExceptionHandling();
+        $member = Member::factory()->create();
+        $this->post('/member', $member->toArray());
+        $this->assertDatabaseHas('members', $member->toArray());
+
+        $member->first_name = 'Bill';
+
+        $this->putJson('/api/member_update/' . $member->id, $member->toArray());
+
+        $this->assertDatabaseHas('members', $member->toArray());
+    }
+
     protected function setAttributes(): void
     {
         $faker = Factory::create();
