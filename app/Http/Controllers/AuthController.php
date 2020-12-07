@@ -119,6 +119,7 @@ class AuthController extends Controller
 
             if ($user) {
                 $payload = array(
+                    'user_id' => $user->id,
                     'name' => $user->name,
                     "email" => $credentials['email'],
                     "now" => Carbon::now()->getTimestamp(),

@@ -14,6 +14,7 @@ use Spatie\Permission\Traits\HasRoles;
  * Class User
  * @package App\Models
  *
+ * @property $id
  * @property $name
  * @property $email
  * @property $password
