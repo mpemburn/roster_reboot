@@ -4,8 +4,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CovenController;
 use App\Http\Controllers\MembersController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use Firebase\JWT\JWT;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -30,6 +32,7 @@ Route::group(['middleware' => 'api'], function () {
     Route::get('/members', MembersController::class . '@show');
 
     Route::get('/covens', CovenController::class . '@show');
+    Route::get('/get_auth', AuthController::class . '@getAuthToken');
 });
 
 Route::group([

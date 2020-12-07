@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Email;
 use App\Models\User;
 use App\Rules\EmailExists;
+use Firebase\JWT\JWT;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use JsonException;
 
 class AuthController extends Controller
 {
@@ -26,12 +29,22 @@ class AuthController extends Controller
             'password_confirmation' => 'required|min:6'
         ]);
 
+        $member = Email::query()
+            ->where('email', $request->email)
+            ->first()
+            ->member()
+            ->first();
+
+        !d($member->id);
         $user = new User([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
         $user->save();
+
+//        $member->user()->save($user);
+        $user->member()->save($member);
 
         return response()->json([
             'success' => true,
@@ -95,6 +108,34 @@ class AuthController extends Controller
     public function user(Request $request)
     {
         return response()->json($request->user());
+    }
+
+    public function getAuthToken(Request $request)
+    {
+        $credentials = $request->all();
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+
+            if ($user) {
+                $payload = array(
+                    'name' => $user->name,
+                    "email" => $credentials['email'],
+                    "now" => Carbon::now()->getTimestamp(),
+                );
+                // NOTE: Requires private key in .env joined by \\n
+                $privateKey = str_replace("\\n", PHP_EOL, env('AUTH_PRIVATE_KEY'));
+                $jwt = JWT::encode($payload, $privateKey, 'RS256');
+
+                return response()->json([
+                    'auth_token' => $jwt
+                ], 200);
+            }
+        }
+
+        return response()->json([
+            'error' => 'Unauthorized access'
+        ], 401);
     }
 }
 
