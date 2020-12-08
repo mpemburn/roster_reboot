@@ -113,7 +113,9 @@ class AuthController extends Controller
 
     public function getAuthToken(Request $request): string
     {
-        return (new AuthService())->getAuthTokenByKey($request);
+        $response = (new AuthService())->getAuthTokenByKey($request);
+
+        return json_encode($response, JSON_THROW_ON_ERROR);
     }
 }
 

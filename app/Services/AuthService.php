@@ -14,7 +14,8 @@ use UnexpectedValueException;
 
 class AuthService
 {
-    public function getAuthTokenByKey(Request $request): string
+    // TODO: Replace this with a resource
+    public function getAuthTokenByKey(Request $request): array
     {
         $authKey = $request->get('key');
 
@@ -27,14 +28,14 @@ class AuthService
             $privateKey = str_replace("\\n", PHP_EOL, env('AUTH_PRIVATE_KEY'));
             $jwt = JWT::encode($payload, $privateKey, 'RS256');
 
-            return response()->json([
+            return [
                 'auth_token' => $jwt
-            ], 200);
+            ];
         }
 
-        return response()->json([
+        return [
             'error' => 'Unauthorized access'
-        ], 401);
+        ];
     }
 
     public function getAuthTokenForUser(Request $request): string
@@ -57,7 +58,7 @@ class AuthService
 
                 return response()->json([
                     'auth_token' => $jwt
-                ], 200);
+                ]);
             }
         }
 
