@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Coven;
 use App\Models\Email;
+use App\Models\User;
+use App\Services\AuthService;
+use DomainException;
+use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
 use App\Models\Member;
 use Illuminate\Support\Facades\DB;
@@ -16,14 +20,22 @@ class MembersController extends Controller
         return Member::query()->create($request->all());
     }
 
-    public function show(): string
+    public function show(Request $request): string
     {
-        $membersData = Member::all();
+        $authToken = $request->get('auth_token');
 
-        return collect([
-            'data' => $membersData->toArray(),
-            'count' => $membersData->count()
-        ])->toJson();
+        if ((new AuthService())->validateAuthToken($authToken)) {
+            $membersData = Member::all();
+
+            return collect([
+                'data' => $membersData->toArray(),
+                'count' => $membersData->count()
+            ])->toJson();
+        }
+
+        return response()->json([
+            'error' => 'Unauthorized access'
+        ], 401);
     }
 
     public function updateMember(Request $request, $id): void
