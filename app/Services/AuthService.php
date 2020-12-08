@@ -71,7 +71,12 @@ class AuthService
         $publicKey = str_replace("\\n", PHP_EOL, env('AUTH_PUBLIC_KEY'));
         try {
             $decoded = JWT::decode($authToken, $publicKey, ['RS256']);
-            if ($decoded) {
+            // Handle JWT containing auth_key
+            if ($decoded && $decoded->auth_key) {
+                return $decoded->auth_key === env('AUTH_USER_KEY');
+            }
+            // Handle JWT containing user_id
+            if ($decoded && $decoded->user_id) {
                 $user = User::query()->find($decoded->user_id);
                 if ($user->exists()) {
                     return true;
