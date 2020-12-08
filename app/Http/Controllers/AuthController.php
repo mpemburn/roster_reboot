@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Email;
 use App\Models\User;
 use App\Rules\EmailExists;
+use App\Services\AuthService;
 use Firebase\JWT\JWT;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -110,33 +111,9 @@ class AuthController extends Controller
         return response()->json($request->user());
     }
 
-    public function getAuthToken(Request $request)
+    public function getAuthToken(Request $request): string
     {
-        $credentials = $request->all();
-
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-
-            if ($user) {
-                $payload = array(
-                    'user_id' => $user->id,
-                    'name' => $user->name,
-                    "email" => $credentials['email'],
-                    "now" => Carbon::now()->getTimestamp(),
-                );
-                // NOTE: Requires private key in .env joined by \\n
-                $privateKey = str_replace("\\n", PHP_EOL, env('AUTH_PRIVATE_KEY'));
-                $jwt = JWT::encode($payload, $privateKey, 'RS256');
-
-                return response()->json([
-                    'auth_token' => $jwt
-                ], 200);
-            }
-        }
-
-        return response()->json([
-            'error' => 'Unauthorized access'
-        ], 401);
+        return (new AuthService())->getAuthTokenByKey($request);
     }
 }
 
