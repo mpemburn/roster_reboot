@@ -6,7 +6,7 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `address_types` (
+CREATE TABLE IF NOT EXISTS `address_types` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `address_type` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXIST `address_types` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `addresses` (
+CREATE TABLE IF NOT EXISTS `addresses` (
   `id` bigint(20) unsigned DEFAULT NULL,
   `address_1` varchar(100) NOT NULL,
   `address_2` varchar(100) DEFAULT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXIST `addresses` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `bondeds` (
+CREATE TABLE IF NOT EXISTS `bondeds` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `coven_id` bigint(20) unsigned NOT NULL,
   `bonded_date` date NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXIST `bondeds` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `covens` (
+CREATE TABLE IF NOT EXISTS `covens` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `abbreviation` varchar(10) NOT NULL,
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXIST `covens` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `degrees` (
+CREATE TABLE IF NOT EXISTS `degrees` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `degree` varchar(20) NOT NULL,
   `initiation_date` date DEFAULT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXIST `degrees` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `elements` (
+CREATE TABLE IF NOT EXISTS `elements` (
   `element` varchar(20) DEFAULT NULL,
   `tool` varchar(20) DEFAULT NULL,
   UNIQUE KEY `unq_elements_element` (`element`)
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXIST `elements` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `emails` (
+CREATE TABLE IF NOT EXISTS `emails` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `is_primary` tinyint(4) DEFAULT 1,
   `email` varchar(255) DEFAULT NULL,
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXIST `emails` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `failed_jobs` (
+CREATE TABLE IF NOT EXISTS `failed_jobs` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXIST `failed_jobs` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `leaders` (
+CREATE TABLE IF NOT EXISTS `leaders` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `member_id` bigint(20) unsigned NOT NULL,
   `role_name` varchar(20) NOT NULL,
@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXIST `leaders` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `leadership_roles` (
+CREATE TABLE IF NOT EXISTS `leadership_roles` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `role_name` varchar(30) DEFAULT NULL,
   `abbreviation` varchar(20) NOT NULL,
@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXIST `leadership_roles` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `members` (
+CREATE TABLE IF NOT EXISTS `members` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `active` tinyint(4) NOT NULL,
   `user_id` bigint(20) unsigned DEFAULT 0,
@@ -158,7 +158,7 @@ CREATE TABLE IF NOT EXIST `members` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `members_addresses` (
+CREATE TABLE IF NOT EXISTS `members_addresses` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `member_id` bigint(20) unsigned NOT NULL,
   `address_id` bigint(20) unsigned NOT NULL,
@@ -174,7 +174,7 @@ CREATE TABLE IF NOT EXIST `members_addresses` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `members_degrees` (
+CREATE TABLE IF NOT EXISTS `members_degrees` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `member_id` bigint(20) unsigned NOT NULL,
   `degree_id` bigint(20) unsigned NOT NULL,
@@ -187,7 +187,7 @@ CREATE TABLE IF NOT EXIST `members_degrees` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `members_leaders` (
+CREATE TABLE IF NOT EXISTS `members_leaders` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `member_id` bigint(20) unsigned NOT NULL,
   `leader_id` bigint(20) unsigned NOT NULL,
@@ -200,7 +200,7 @@ CREATE TABLE IF NOT EXIST `members_leaders` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `members_notes` (
+CREATE TABLE IF NOT EXISTS `members_notes` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `member_id` bigint(20) unsigned NOT NULL,
   `note_id` bigint(20) unsigned NOT NULL,
@@ -213,7 +213,7 @@ CREATE TABLE IF NOT EXIST `members_notes` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `migrations` (
+CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
@@ -222,7 +222,7 @@ CREATE TABLE IF NOT EXIST `migrations` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `model_has_permissions` (
+CREATE TABLE IF NOT EXISTS `model_has_permissions` (
   `permission_id` bigint(20) unsigned NOT NULL,
   `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `model_id` bigint(20) unsigned NOT NULL,
@@ -233,7 +233,7 @@ CREATE TABLE IF NOT EXIST `model_has_permissions` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `model_has_roles` (
+CREATE TABLE IF NOT EXISTS `model_has_roles` (
   `role_id` bigint(20) unsigned NOT NULL,
   `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `model_id` bigint(20) unsigned NOT NULL,
@@ -244,7 +244,7 @@ CREATE TABLE IF NOT EXIST `model_has_roles` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `notes` (
+CREATE TABLE IF NOT EXISTS `notes` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `note` text DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -252,7 +252,7 @@ CREATE TABLE IF NOT EXIST `notes` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `oauth_access_tokens` (
+CREATE TABLE IF NOT EXISTS `oauth_access_tokens` (
   `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` bigint(20) unsigned DEFAULT NULL,
   `client_id` bigint(20) unsigned NOT NULL,
@@ -268,7 +268,7 @@ CREATE TABLE IF NOT EXIST `oauth_access_tokens` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `oauth_auth_codes` (
+CREATE TABLE IF NOT EXISTS `oauth_auth_codes` (
   `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` bigint(20) unsigned NOT NULL,
   `client_id` bigint(20) unsigned NOT NULL,
@@ -281,7 +281,7 @@ CREATE TABLE IF NOT EXIST `oauth_auth_codes` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `oauth_clients` (
+CREATE TABLE IF NOT EXISTS `oauth_clients` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) unsigned DEFAULT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -299,7 +299,7 @@ CREATE TABLE IF NOT EXIST `oauth_clients` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `oauth_personal_access_clients` (
+CREATE TABLE IF NOT EXISTS `oauth_personal_access_clients` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `client_id` bigint(20) unsigned NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -309,7 +309,7 @@ CREATE TABLE IF NOT EXIST `oauth_personal_access_clients` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `oauth_refresh_tokens` (
+CREATE TABLE IF NOT EXISTS `oauth_refresh_tokens` (
   `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `access_token_id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `revoked` tinyint(1) NOT NULL,
@@ -320,7 +320,7 @@ CREATE TABLE IF NOT EXIST `oauth_refresh_tokens` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `password_resets` (
+CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -329,7 +329,7 @@ CREATE TABLE IF NOT EXIST `password_resets` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `permissions` (
+CREATE TABLE IF NOT EXISTS `permissions` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -340,7 +340,7 @@ CREATE TABLE IF NOT EXIST `permissions` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `prefixes` (
+CREATE TABLE IF NOT EXISTS `prefixes` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `prefix` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
@@ -348,7 +348,7 @@ CREATE TABLE IF NOT EXIST `prefixes` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `role_has_permissions` (
+CREATE TABLE IF NOT EXISTS `role_has_permissions` (
   `permission_id` bigint(20) unsigned NOT NULL,
   `role_id` bigint(20) unsigned NOT NULL,
   PRIMARY KEY (`permission_id`,`role_id`),
@@ -359,7 +359,7 @@ CREATE TABLE IF NOT EXIST `role_has_permissions` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `roles` (
+CREATE TABLE IF NOT EXISTS `roles` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -370,7 +370,7 @@ CREATE TABLE IF NOT EXIST `roles` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `security_questions` (
+CREATE TABLE IF NOT EXISTS `security_questions` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `question` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -378,7 +378,7 @@ CREATE TABLE IF NOT EXIST `security_questions` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `states` (
+CREATE TABLE IF NOT EXISTS `states` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `abbreviation` varchar(2) NOT NULL,
   `name` varchar(100) DEFAULT NULL,
@@ -390,7 +390,7 @@ CREATE TABLE IF NOT EXIST `states` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `suffixes` (
+CREATE TABLE IF NOT EXISTS `suffixes` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `suffix` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
@@ -398,7 +398,7 @@ CREATE TABLE IF NOT EXIST `suffixes` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -413,7 +413,7 @@ CREATE TABLE IF NOT EXIST `users` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `users_security_questions` (
+CREATE TABLE IF NOT EXISTS `users_security_questions` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) unsigned NOT NULL,
   `question_id` bigint(20) unsigned NOT NULL,
@@ -426,7 +426,7 @@ CREATE TABLE IF NOT EXIST `users_security_questions` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXIST `wheels` (
+CREATE TABLE IF NOT EXISTS `wheels` (
   `wheel` varchar(20) DEFAULT NULL,
   UNIQUE KEY `unq_wheels_name` (`wheel`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
