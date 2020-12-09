@@ -31,6 +31,11 @@
         recurse: yes
         state: directory
 
+    - name: Composer install
+      shell: composer install -vvv
+      args:
+        chdir: "{{ project_dir }}"
+
     - name: Install Passport (to generate keys)
       shell: php artisan passport:install
       args:
