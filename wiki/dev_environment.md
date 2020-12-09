@@ -39,10 +39,12 @@ Provisioning is handled by `provision.sh` script in the project root.  It has on
 
 You will need to create a `.env` file to be used on your remote instances.  This should contain all of the secret keys need (e.g., database user and password).  To encrypt the file via Ansible, use the following method:
 
-- In the project root, create your production `.env` file and name it `prodenv.v`
-- Encrypt it using `ansible-vault --encrypt prodenv.v`
-- Enter a Vault password.
-- Create a file in the `ansible` directory called `vpwd` and save the password in it.
+1. In the project root, create what will become your production `.env` file and name it `production.env`.
+2. Copy `production.env` to `prodenv.v`.
+3. Encrypt it using `ansible-vault encrypt prodenv.v`
+4. Enter a Vault password.
+5. Create a file in the `ansible` directory called `vpwd` and save the password in it.
 
-**NOTE**: Make sure that both `prodenv.v` and `ansible/vpwd` are listed in `.gitignore`. 
-
+**NOTES**: 
+- Make sure that `production.env`, `prodenv.v`, and `ansible/vpwd` are listed in `.gitignore`. 
+- Any time you need to make a change to the production `.env`, you must change `production.env` and re-copy to `prodenv.v` before encrypting.
