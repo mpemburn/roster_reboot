@@ -3,6 +3,8 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CovenController;
 use App\Http\Controllers\MembersController;
+use App\Http\Resources\MemberResource;
+use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +32,9 @@ Route::group(['middleware' => 'api'], function () {
     Route::put('member_update/{member_id}', [MembersController::class, 'updateMember']);
 
     Route::get('/members', MembersController::class . '@show');
+    Route::get('/get_member/{id}', function ($id) {
+        return new MemberResource(Member::findOrFail($id));
+    });
 
     Route::get('/covens', CovenController::class . '@show');
     Route::get('/get_auth', AuthController::class . '@getAuthToken');
