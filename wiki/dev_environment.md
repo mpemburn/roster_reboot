@@ -31,11 +31,11 @@ The default Nginx server configuration will be found in the `ansible/templates/r
 **NOTE**: As of this writing, the HTTPS settings have not been implemented.
 
 ## Provisioning 
-Provisioning is handled by `provision.sh` script in the project root.  It has one required argument -- the environment -- and can take any valid `ansible-playbook` options. Example syntax:
+Provisioning is handled by the `build.sh` script in the project root.  It has two required arguments -- the action (`provision` or `deploy`) and the environment (`production` or `staging`). It can take any valid `ansible-playbook` options (e.g., `-v` for "verbose"). Example syntax:
 
-- `$ ./provision.sh production` 
-- `$ ./provision.sh staging` 
-- `$ ./provision.sh staging -v`
+- `$ ./build.sh provision production` 
+- `$ ./build.sh provision staging` 
+- `$ ./build.sh provision staging -v`
 
 You will need to create a `.env` file to be used on your remote instances.  This should contain all of the secret keys need (e.g., database user and password).  To encrypt the file via Ansible, use the following method:
 
@@ -48,3 +48,10 @@ You will need to create a `.env` file to be used on your remote instances.  This
 **NOTES**: 
 - Make sure that `production.env`, `prodenv.v`, and `ansible/vpwd` are listed in `.gitignore`. 
 - Any time you need to make a change to the production `.env`, you must change `production.env` and re-copy to `prodenv.v` before encrypting.
+
+## Deploying Updates
+When you need to deploy changes to the code, you will also use the `build.sh` script. The deploy process does the following:
+- Pull the latest commit to the `master` branch of the repo.
+- Run `composer install`.
+- Run `php artisan migrate`.
+- Uploads and decrypts the production `.env` file.
