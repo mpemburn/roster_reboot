@@ -30,7 +30,8 @@ done
 ENV="$1"; shift
 EXTRA_PARAMS=$@
 HOSTS_FILE="hosts/$ENV"
-DEPLOY_CMD="ansible-playbook deploy.yml -i $HOSTS_FILE -e env=$ENV $EXTRA_PARAMS"
+PASSWORD_FILE=vpwd
+DEPLOY_CMD="ansible-playbook --vault-password-file $PASSWORD_FILE deploy.yml -i $HOSTS_FILE -e env=$ENV $EXTRA_PARAMS"
 
 cd ./ansible
 
