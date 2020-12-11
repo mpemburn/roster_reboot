@@ -55,3 +55,10 @@ When you need to deploy changes to the code, you will also use the `build.sh` sc
 - Run `composer install`.
 - Run `php artisan migrate`.
 - Uploads and decrypts the production `.env` file.
+
+Examples:
+
+- `$ ./build.sh deploy production` 
+- `$ ./build.sh deploy staging` 
+- `$ ./build.sh deploy staging -v`
+
