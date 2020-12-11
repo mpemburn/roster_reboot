@@ -104,18 +104,23 @@ class AuthController extends Controller
     /**
      * Get the authenticated User
      *
-     * @return [json] user object
+     * @param Request $request
+     * @return JsonResponse
      */
-    public function user(Request $request)
+    public function user(Request $request): JsonResponse
     {
         return response()->json($request->user());
     }
 
-    public function getAuthToken(Request $request): string
+    /**
+     * Get auth token required for all API requests
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function getAuthToken(Request $request): JsonResponse
     {
-        $response = (new AuthService())->getAuthTokenByKey($request);
-
-        return json_encode($response, JSON_THROW_ON_ERROR);
+        return (new AuthService())->getAuthTokenByKey($request);
     }
 }
 

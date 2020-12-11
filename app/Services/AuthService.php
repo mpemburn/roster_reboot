@@ -8,14 +8,16 @@ use App\Models\User;
 use Carbon\Carbon;
 use DomainException;
 use Firebase\JWT\JWT;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 use UnexpectedValueException;
 
 class AuthService
 {
     // TODO: Replace this with a resource
-    public function getAuthTokenByKey(Request $request): array
+    public function getAuthTokenByKey(Request $request): JsonResponse
     {
         $authKey = $request->get('key');
 
@@ -28,14 +30,14 @@ class AuthService
             $privateKey = str_replace("\\n", PHP_EOL, env('AUTH_PRIVATE_KEY'));
             $jwt = JWT::encode($payload, $privateKey, 'RS256');
 
-            return [
+            return response()->json([
                 'auth_token' => $jwt
-            ];
+            ], 200);
         }
 
-        return [
+        return response()->json([
             'error' => 'Unauthorized access'
-        ];
+        ], 403);
     }
 
     public function getAuthTokenForUser(Request $request): string
