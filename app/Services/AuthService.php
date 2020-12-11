@@ -81,7 +81,7 @@ class AuthService
             // Handle JWT containing user_id
             if ($decoded && $decoded->user_id) {
                 $user = User::query()->find($decoded->user_id);
-                if ($user->exists()) {
+                if ($user::exists()) {
                     return true;
                 }
             }
