@@ -1,7 +1,7 @@
 # ASW Membership Roster Developer Notes
 
 ## Overview
-The **ASW Membership Roster** Version 2 uses a **Larvel 8.x** framework. It is designed to run on an **Amazon EC2** instance which can be fully provisioned with included **Ansible** playbooks via the `provision.sh` and `deploy.sh` bash scripts. 
+The **ASW Membership Roster** Version 2 uses the **Larvel 8.x** framework. It is designed to run on an **Amazon EC2** instance which can be fully provisioned with included **Ansible** playbooks via the `provision.sh` and `deploy.sh` bash scripts. 
 
 ## EC2 Setup
 Assuming you will be using **Amazon EC2**, it will be necessary to expose the `HTTP`, `HTTPS`, and `SSH` ports in the **Security Group** associated with your instance.
